@@ -9,14 +9,11 @@ module.exports.run = async (bot, message, args, con) => {
     console.log(message.member.voiceChannel);
     console.log(message.user.voiceChannel);
 
+
 }
 //name this whatever the command name is.
 module.exports.help = {
-  name: "example",
-  description: "Example"
+  name: "play",
+  description: "play"
 
-}
-
-async function play(connection, url) {
-    connection.play(await ytdl(url), { type: 'opus' });
 }
