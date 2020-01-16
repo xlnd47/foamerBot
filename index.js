@@ -79,7 +79,7 @@ bot.on("message", async message => {
 
   con.query(`select * from xp where discordId = "${message.author.id}"`, (err, rows) => {
     if (err) throw err;
-
+    //console.log(rows);
 
     let sql1;
     if(rows.length < 1){
@@ -90,7 +90,7 @@ bot.on("message", async message => {
       sql1 = `update xp set xp = ${xp + generateXp()} where discordId = "${message.author.id}"`;
     }
 
-    con.query(sql, console.log);
+    con.query(sql1, console.log);
 
   })
 
