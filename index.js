@@ -109,7 +109,7 @@ bot.on("message", async message => {
 
 
 function checkLevelUp(message){
-  let sql2 = `select * from xp where discordId = "${message.user.id}"`
+  let sql2 = `select * from xp where discordId = "${message.author.id}"`
   con.query(sql2, (err, rows) => {
     if (err)
       return message.reply(err);
