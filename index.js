@@ -88,7 +88,7 @@ bot.on("message", async message => {
 
       sql1 = `update xp set xp = ${xp + generateXp()} where discordId = "${message.author.id}"`;
     }
-    con.query(sql1, console.log);
+    con.query(sql1);
 
   })
 
