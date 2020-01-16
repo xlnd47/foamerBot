@@ -16,8 +16,6 @@ module.exports.run = async (bot, message, args, con) => {
         console.log(err);
     });
 
-
-
 }
 //name this whatever the command name is.
 module.exports.help = {
