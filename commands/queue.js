@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args, con) => {
                   console.log('Format found!');
                 }
 
-                console.log(info);
+                console.log(info.title);
               });
         });
 
