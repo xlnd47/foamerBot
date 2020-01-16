@@ -115,8 +115,18 @@ function checkLevelUp(message){
       return message.reply(err);
     let xpNeeded = 5 * (rows[0].level ^ 2) + 50 * rows[0].level + 100;
     console.log(xpNeeded);
+
+    if (xpNeeded<rows[0].xp){
+      levelUp(message.author.id, message, rows[0].level)
+    }
   })
 
 }
 
+function levelUp(id, message, lvl){
+  let sql3 = `update level set level = ${lvl + 1} where discordId = "${id}"`; 
+  con.query(sql3);
+
+  message.reply(`bru, ge zijt level ${lvl + 1} nu`);
+}
 
