@@ -20,6 +20,8 @@ try {
   con.query(sql, function (err, result) {
     if (err) console.log(err);
     console.log(result[0].value);
+    bot.login(result[0].value)
+
   });
 } catch (e) {
   console.error(e);
@@ -79,6 +81,6 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args, con);
 })
 
+//bot.login(config.token)
 
 
-bot.login(config.token)
