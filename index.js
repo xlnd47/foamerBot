@@ -114,7 +114,7 @@ function checkLevelUp(message){
     if (err)
       return message.reply(err);
     let xpNeeded = 5 * (rows[0].level ^ 2) + 50 * rows[0].level + 100;
-    console.log(xpNeeded);
+    //console.log(xpNeeded);
 
     if (xpNeeded<rows[0].xp){
       levelUp(message.author.id, message, rows[0].level)
