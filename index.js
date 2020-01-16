@@ -124,7 +124,7 @@ function checkLevelUp(message){
 }
 
 function levelUp(id, message, lvl){
-  let sql3 = `update level set level = ${lvl + 1} where discordId = "${id}"`; 
+  let sql3 = `update xp set level = ${lvl + 1} where discordId = "${id}"`; 
   con.query(sql3);
 
   message.reply(`bru, ge zijt level ${lvl + 1} nu`);
