@@ -6,8 +6,8 @@ module.exports.run = async (bot, message, args, con) => {
     // if (args[0].length < 1)
     //     return message.reply(`gimme link bru, prefer youtube link`);
 
-    console.log(message.member.voiceChannel);
-    console.log(message.user.voiceChannel);
+    console.log(message.member);
+    // console.log(message.user);
 
 
 }
