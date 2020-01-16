@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args, con) => {
 
         var thumbnail = youtubeThumbnail(`https://www.youtube.com/watch?v=${rows[0].urlId}`);
         console.log(thumbnail.high.url);
-        ytdl.getInfo(e.urlId, (err, info) => {
+        ytdl.getInfo(rows[0].urlId, (err, info) => {
                     if (err) throw err;
                     // let format = ytdl.chooseFormat(info.formats, { quality: '134' });
                     // if (format) {
