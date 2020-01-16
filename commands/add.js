@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args, con) => {
     if (id == null)
         return message.reply(`haha rekt, not possible bru`);
  
-    let sql = `insert into playlist values("${id}", "${message.member.id}", "${message.guild.id}", 0, NOW())`;
+    let sql = `insert into playlist values("${id}",  "${message.guild.id}", "${message.member.id}", 0, NOW())`;
     con.query(sql, (err, rows) => {
         message.reply(`tis toegevoegd bru`);
         console.log(err);
