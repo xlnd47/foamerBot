@@ -65,11 +65,32 @@ bot.on("ready", () => {
 
 });
 
+function generateXp(){
+  let min = 10;
+  let max = 30;
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 bot.on("message", async message => {
   //a little bit of data parsing/general checks
   if(message.author.bot) return;
-  if(message.content.indexOf(config.prefix) !== 0) return;
   if(message.channel.type === 'dm') return;
+
+  con.query(`select * from xp where discordId = "${message.author.id}"`, (err, rows) => {
+    if (err) throw err;
+    console.log(rows);
+
+
+  })
+
+
+  if(message.content.indexOf(config.prefix) !== 0) return;
+
+
+
+
+
   let content = message.content.split(" ");
   let command = content[0];
   let args = content.slice(1);
