@@ -7,14 +7,14 @@ module.exports.run = async (bot, message, args, con) => {
     console.log(sql);
     con.query(sql, (err, rows) => {
         //console.log(err);
-        console.log(rows);
+        //console.log(rows);
 
         rows.forEach(e => {
             ytdl.getInfo(e.urlId, (err, info) => {
                 if (err) throw err;
                 let format = ytdl.chooseFormat(info.formats, { quality: '134' });
                 if (format) {
-                  console.log('Format found!');
+                  //console.log('Format found!');
                 }
 
                 console.log(info.title);
