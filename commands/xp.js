@@ -5,6 +5,8 @@ module.exports.run = async (bot, message, args, con) => {
     let sql = `select * from xp where discordId = "${message.author.id}"`;
 
     con.query(sql, (err, rows) => { 
+        if (rows[0] == undefined)
+            return  message.reply(`jij heb ${rows[0].xp} xp, bru`);
         message.reply(`jij heb ${rows[0].xp} xp, bru`);
     })
 
