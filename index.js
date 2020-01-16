@@ -20,6 +20,7 @@ try {
   con.query(sql, function (err, result) {
     if (err) console.log(err);
     token = result[0].value;
+    console.log(result[0]);
   });
 } catch (e) {
   console.error(e);
