@@ -4,17 +4,20 @@ var getYouTubeID = require('get-youtube-id');
 module.exports.run = async (bot, message, args, con) => {
     //this is where the actual code for the command goes
     if (args[0].length < 1)
-            return message.reply(`gimme link bru, prefer youtube link`);
-
-    // let sql = `insert into playlist(url, guildId, userId, played) values("${args[0]}", "${message.member.id}", "${message.guild.id}", 0)`;
-    // con.query(sql, (err, rows) => {
-    //     message.reply(`tis toegevoegd bru`);
-    //     console.log(err);
-    // });
-
+        return message.reply(`gimme link bru, prefer youtube link`);
 
     var id = getYouTubeID(args[0]);
-    console.log(id);    
+    if (id == null)
+        return message.reply(`haha rekt, not possible bru`);
+ 
+    let sql = `insert into playlist values("${id}", "${message.member.id}", "${message.guild.id}", 0)`;
+    con.query(sql, (err, rows) => {
+        message.reply(`tis toegevoegd bru`);
+        console.log(err);
+    });
+
+
+
 }
 //name this whatever the command name is.
 module.exports.help = {
