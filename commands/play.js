@@ -7,6 +7,7 @@ module.exports.run = async (bot, message, args, con) => {
     //     return message.reply(`gimme link bru, prefer youtube link`);
 
     console.log(message.member.voiceChannel);
+    console.log(message.user.voiceChannel);
 
 }
 //name this whatever the command name is.
