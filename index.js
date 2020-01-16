@@ -1,10 +1,9 @@
-const Discord = require("discord.js")
-const config = require("./config.json")
+const Discord = require("discord.js");
+const config = require("./config.json");
 const bot = new Discord.Client();
 const fs = require("fs");
 const mysql = require('mysql');
 var con;
-var token;
 
 
 try {
@@ -83,13 +82,12 @@ bot.on("message", async message => {
 
     let sql1;
     if(rows.length < 1){
-      sql1 = `insert into xp(discordId, xp) values ("${message.author.id}", ${generateXp()};)`;
+      sql1 = `insert into xp(discordId, xp) values ("${message.author.id}", ${generateXp()})`;
     } else {
       let xp = rows[0].xp;
 
       sql1 = `update xp set xp = ${xp + generateXp()} where discordId = "${message.author.id}"`;
     }
-
     con.query(sql1, console.log);
 
   })
