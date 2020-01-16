@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args, con) => {
         // });
 
         var thumbnail = youtubeThumbnail(`https://www.youtube.com/watch?v=${rows[0].urlId}`);
-        console.log(thumbnail)
+        console.log(thumbnail.high.url)
        //message.reply(thumbnail);
 
     })
