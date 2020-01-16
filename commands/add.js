@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args, con) => {
     if (args[0].length < 1)
             return message.reply(`gimme link bru, prefer youtube link`);
 
-    let sql = `insert into playlist values("${args[0]}", "${message.member.id}", "${message.guild.id}, 0")`;
+    let sql = `insert into playlist(url, guildId, userId, played) values("${args[0]}", "${message.member.id}", "${message.guild.id}, 0")`;
     con.query(sql, (err, rows) => {
         message.reply(`tis toegevoegd bru`);
     });
