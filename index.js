@@ -62,7 +62,7 @@ bot.on("ready", () => {
 
 function generateXp(){
   let min = 5;
-  let max = 10;
+  let max = 25;
 
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
