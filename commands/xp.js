@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args, con) => {
 
     con.query(sql, (err, rows) => { 
         if (rows[0] == undefined)
-            return  message.reply(`jij heb ${rows[0].xp} xp, bru`);
+            return  message.reply(`jij heb geen xp, bru`);
         message.reply(`jij heb ${rows[0].xp} xp, bru`);
     })
 
