@@ -6,6 +6,7 @@ const mysql = require('mysql');
 var con;
 var token;
 
+
 try {
   // Connection Setup
   con = mysql.createConnection({
@@ -19,9 +20,8 @@ try {
   var sql = `select value from config where name = "botToken"`;
   con.query(sql, function (err, result) {
     if (err) console.log(err);
-    console.log(result[0].value);
+    //console.log(result[0].value);
     bot.login(result[0].value)
-
   });
 } catch (e) {
   console.error(e);
@@ -80,7 +80,5 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(command.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args, con);
 })
-
-//bot.login(config.token)
 
 
