@@ -27,7 +27,6 @@ try {
 }
 
 
-
 bot.commands = new Discord.Collection();
 fs.readdir("./commands/", (err, files) => {
 
@@ -46,9 +45,6 @@ jsfile.forEach((f, i) =>{
 });
 
 });
-
-
-
 
 
 bot.on("ready", () => {
@@ -71,6 +67,9 @@ function generateXp(){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+
+
+
 bot.on("message", async message => {
   //a little bit of data parsing/general checks
   if(message.author.bot) return;
@@ -90,14 +89,11 @@ bot.on("message", async message => {
     }
     con.query(sql1);
 
+    checkLevelUp(message);
+
   })
 
-
   if(message.content.indexOf(config.prefix) !== 0) return;
-
-
-
-
 
   let content = message.content.split(" ");
   let command = content[0];
@@ -109,5 +105,18 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(command.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args, con);
 })
+
+
+
+function checkLevelUp(message){
+  let sql2 = `select * from xp where discordId = "${message.user.id}"`
+  con.query(sql2, (err, rows) => {
+    if (err)
+      return message.reply(err);
+    let xpNeeded = 5 * (rows[0].level ^ 2) + 50 * rows[0].level + 100;
+    console.log(xpNeeded);
+  })
+
+}
 
 
