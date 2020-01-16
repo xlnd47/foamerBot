@@ -3,6 +3,7 @@ const Discord = require('discord.js')
 module.exports.run = async (bot, message, args, con) => {
     //this is where the actual code for the command goes
     let sql = `select * from playlist where guildId = "${message.guild.id}" and played = 0`;
+    console.log(sql);
     con.query(sql, (err, rows) => {
         console.log(err);
         console.log(rows);
