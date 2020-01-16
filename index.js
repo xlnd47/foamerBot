@@ -19,8 +19,7 @@ try {
   var sql = `select value from config where name = "botToken"`;
   con.query(sql, function (err, result) {
     if (err) console.log(err);
-    token = result[0].value;
-    console.log(result[0]);
+    console.log(result[0].value);
   });
 } catch (e) {
   console.error(e);
@@ -82,4 +81,4 @@ bot.on("message", async message => {
 
 
 
-bot.login(token)
+bot.login(config.token)
