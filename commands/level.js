@@ -7,14 +7,14 @@ module.exports.run = async (bot, message, args, con) => {
     con.query(sql, (err, rows) => { 
         if (rows[0] == undefined)
             return  message.reply(`jij heb geen xp, bru`);
-        message.reply(`jij heb ${rows[0].xp} xp, bru`);
+        message.reply(`jij ben lvl ${rows[0].level} xp en heb ${rows[0].xp} xp, bru`);
     })
 
 
 }
 //name this whatever the command name is.
 module.exports.help = {
-  name: "xp",
-  description: "xp"
+  name: "level",
+  description: "level"
 
 }
