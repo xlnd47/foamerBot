@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args, conn) => {
 
     //console.log(message.member);
     // console.log(message.user);
-    console.log(message.author);
+    console.log(message.member.voiceChannel);
     con = con; 
 
 
