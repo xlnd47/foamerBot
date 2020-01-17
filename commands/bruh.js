@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 module.exports.run = async (bot, message, args, con) => {
         
     var user = await message.mentions.users.first();
-    if (user != undefined)
+    if (user == undefined)
         return message.reply(`dit is geen bruh, bruh`);
 
 
