@@ -24,7 +24,15 @@ try {
     database : "foamer"
   });
 
-  
+  pool.getConnection(function(err, connection) {
+    if(err){
+      console.log(err);
+      callback(true);
+      return;
+    }
+
+    con = connection;
+  })
 
 
 
