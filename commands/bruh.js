@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args, con) => {
     con.query(sql, (err, rows) => { 
         if (rows[0] == undefined)
             return  message.reply(`bruh, deze bruh heeft geen xp, bruh`);
-        message.reply(`deze bruh is lvl ${rows[0].level} en heef ${rows[0].xp} xp, bruh`);
+        message.reply(`Deze bruh is lvl ${rows[0].level} en heef ${rows[0].xp} xp, bruh`);
     })
 }
 //name this whatever the command name is.
