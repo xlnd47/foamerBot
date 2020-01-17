@@ -9,12 +9,13 @@ module.exports.run = async (bot, message, args, conn) => {
     // console.log(message.user);
     con = con; 
 
-    if (message.member.voiceChannel) {
+    const voiceChannel = message.member.voiceChannel;
+    if (voiceChannel) {
       var voice = message.member.voiceChannel.join();
     } else {
       return message.reply('bruh, ga in voice channel bruh');
     }
-
+    const serverQueue = message.guild.id;
 
     try {
       let sql = `select * from playlist where guildId = "${message.guild.id} and played = 0"`;
@@ -23,16 +24,19 @@ module.exports.run = async (bot, message, args, conn) => {
           return message.reply(`niks in queue, bruh`);
 
         let firstSong = result[0];
-        message.member.voiceChannel.playStream(ytdl(`https://www.youtube.com/watch?v=${firstSong.urlId}`, {
+
+        const dispatcher = serverQueue.connection.playStream(ytdl(`https://www.youtube.com/watch?v=${firstSong.urlId}`, {
           filter: `audioonly`,
           quality: `highestaudio`
         }))
         .on('end', () => {
           console.log('Music ended!');
         })
-         .on('error', error => {
+        .on('error', error => {
           console.error(error);
-         });
+        });
+
+        dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 
       });
     }catch(e){
