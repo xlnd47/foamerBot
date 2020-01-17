@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args, conn) => {
 
     //console.log(message.member);
     // console.log(message.user);
-    con = con; 
+    con = conn; 
 
     const voiceChannel = message.member.voiceChannel;
     if (voiceChannel) {
