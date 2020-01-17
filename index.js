@@ -32,16 +32,17 @@ try {
     }
 
     con = connection;
+    var sql = `select value from config where name = "botToken"`;
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      //console.log(result[0].value);
+      bot.login(result[0].value)
+    });
   })
 
 
 
-  var sql = `select value from config where name = "botToken"`;
-  con.query(sql, function (err, result) {
-    if (err) console.log(err);
-    //console.log(result[0].value);
-    bot.login(result[0].value)
-  });
+  
 } catch (e) {
   console.error(e);
 }
