@@ -4,17 +4,29 @@ const bot = new Discord.Client();
 const fs = require("fs");
 const mysql = require('mysql');
 var con;
+var pool;
 
 
 try {
-  // Connection Setup
-  con = mysql.createConnection({
-      host: "localhost",
-      user: config.dbUser,
-      password: config.dbPassword,
-      database : "foamer",
-      connectTimeout: 1000000
+  // // Connection Setup
+  // con = mysql.createConnection({
+  //     host: "localhost",
+  //     user: config.dbUser,
+  //     password: config.dbPassword,
+  //     database : "foamer",
+  //     connectTimeout: 1000000
+  // });
+
+  pool = mysql.createPool({
+    host: "localhost",
+    user: config.dbUser,
+    password: config.dbPassword,
+    database : "foamer"
   });
+
+  
+
+
 
   var sql = `select value from config where name = "botToken"`;
   con.query(sql, function (err, result) {
@@ -72,6 +84,15 @@ function generateXp(){
 
 bot.on("message", async message => {
   //a little bit of data parsing/general checks
+  pool.getConnection(function(err, connection) {
+    if(err){
+      console.log(err);
+      callback(true);
+      return;
+    }
+
+    con = connection;
+  })
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
 
