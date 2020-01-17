@@ -81,9 +81,14 @@ bot.on("ready", () => {
 
 });
 
-function generateXp(){
-  let min = 5;
-  let max = 25;
+function generateXp(message){
+  let min = 1;
+  let max = 10;
+  if (message.includes("bru")){
+    min = 5;
+    max = 25;
+  }
+
 
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -111,7 +116,7 @@ bot.on("message", async message => {
 
     let sql1;
     if(rows.length < 1){
-      sql1 = `insert into xp(discordId, xp) values ("${message.author.id}", ${generateXp()})`;
+      sql1 = `insert into xp(discordId, xp) values ("${message.author.id}", ${generateXp(message)})`;
     } else {
       let xp = rows[0].xp;
 
