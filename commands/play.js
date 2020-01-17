@@ -20,11 +20,12 @@ module.exports.run = async (bot, message, args, conn) => {
     try {
       let sql = `select * from playlist where guildId = "${message.guild.id}" and played = 0"`;
       con.query(sql, (err, result) => {
+        console.log(result);
         if(result.length < 1)
           return message.reply(`niks in queue, bruh`);
 
         let firstSong = result[0];
-        
+
         console.log(firstSong);
 
         const dispatcher = serverQueue.connection.playStream(ytdl(`https://www.youtube.com/watch?v=${firstSong.urlId}`, {
