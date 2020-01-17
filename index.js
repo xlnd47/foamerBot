@@ -78,12 +78,12 @@ bot.on("ready", () => {
 });
 
 function generateXp(message){
-  let min = 1;
-  let max = 5;
+  let min = 3;
+  let max = 10;
 
   if (message.content.includes("bru")){
-    min = 5;
-    max = 10;
+    min = 10;
+    max = 20;
   }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
