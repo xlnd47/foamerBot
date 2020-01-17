@@ -38,7 +38,7 @@ try {
       //console.log(result[0].value);
       bot.login(result[0].value)
     });
-  })
+  });
 
 
 
@@ -77,7 +77,7 @@ bot.on("ready", () => {
     },
     status: 'idle'
 
-  }) 
+  }); 
 
 });
 
@@ -109,7 +109,7 @@ bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
   
-  if(message.content[0] !== "?") {
+  if(message.content[0] !== config.prefix) {
     con.query(`select * from xp where discordId = "${message.author.id}"`, (err, rows) => {
       if (err) throw err;
       //console.log(rows);
@@ -128,7 +128,7 @@ bot.on("message", async message => {
 
     });
   }
-  
+
   if(message.content.indexOf(config.prefix) !== 0) return;
 
   let content = message.content.split(" ");
@@ -155,7 +155,7 @@ function checkLevelUp(message){
     if (xpNeeded<rows[0].xp){
       levelUp(message.author.id, message, rows[0].level)
     }
-  })
+  });
 
 }
 
