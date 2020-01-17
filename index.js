@@ -108,27 +108,27 @@ bot.on("message", async message => {
   })
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
-
-  if (message.content[0] !== "?") {
+  
+  if(message.content[0] !== "?") {
     con.query(`select * from xp where discordId = "${message.author.id}"`, (err, rows) => {
-    if (err) throw err;
-    //console.log(rows);
+      if (err) throw err;
+      //console.log(rows);
 
-    let sql1;
-    if(rows.length < 1){
-      sql1 = `insert into xp(discordId, xp) values ("${message.author.id}", ${generateXp(message)})`;
-    } else {
-      let xp = rows[0].xp;
+      let sql1;
+      if(rows.length < 1){
+        sql1 = `insert into xp(discordId, xp) values ("${message.author.id}", ${generateXp(message)})`;
+      } else {
+        let xp = rows[0].xp;
 
-      sql1 = `update xp set xp = ${xp + generateXp(message)} where discordId = "${message.author.id}"`;
-    }
-    con.query(sql1);
+        sql1 = `update xp set xp = ${xp + generateXp(message)} where discordId = "${message.author.id}"`;
+      }
+      con.query(sql1);
 
-    checkLevelUp(message);
+      checkLevelUp(message);
+
+    });
   }
-
-  })
-
+  
   if(message.content.indexOf(config.prefix) !== 0) return;
 
   let content = message.content.split(" ");
@@ -140,7 +140,7 @@ bot.on("message", async message => {
   //checks if message contains a command and runs it
   let commandfile = bot.commands.get(command.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args, con);
-})
+});
 
 
 
