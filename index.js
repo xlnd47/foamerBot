@@ -85,6 +85,8 @@ function generateXp(message){
   let min = 1;
   let max = 10;
   console.log(message);
+
+  
   // if (message.content.includes("bru")){
   //   min = 5;
   //   max = 25;
