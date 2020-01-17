@@ -19,8 +19,8 @@ module.exports.run = async (bot, message, args, conn) => {
 
     try {
       let sql = `select * from playlist where guildId = "${message.guild.id}" and played = 0"`;
-      con.query(sql, (err, rows) => {
-        if(rows.length < 1)
+      con.query(sql, (err, result) => {
+        if(result.length < 1)
           return message.reply(`niks in queue, bruh`);
 
         let firstSong = result[0];
