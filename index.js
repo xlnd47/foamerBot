@@ -39,10 +39,6 @@ try {
       bot.login(result[0].value)
     });
   });
-
-
-
-  
 } catch (e) {
   console.error(e);
 }
@@ -83,11 +79,11 @@ bot.on("ready", () => {
 
 function generateXp(message){
   let min = 1;
-  let max = 10;
+  let max = 5;
 
   if (message.content.includes("bru")){
     min = 5;
-    max = 25;
+    max = 10;
   }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
