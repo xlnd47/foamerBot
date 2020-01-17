@@ -10,8 +10,12 @@ module.exports.run = async (bot, message, args, conn) => {
     con = conn; 
 
     const voiceChannel = message.member.voiceChannel;
-    if (message.member.voiceChannel) {
-      var voice = message.member.voiceChannel.join();
+    var connection;
+    if(message.member.voiceChannel) {
+      var voice = message.member.voiceChannel.join()
+      .then (connections => {
+        connection = connections;
+      });
     } else {
       return message.reply('bruh, ga in voice channel bruh');
     }
@@ -27,7 +31,7 @@ module.exports.run = async (bot, message, args, conn) => {
 
         console.log(firstSong);
 
-        const dispatcher = voiceChannel.playStream(ytdl(`https://www.youtube.com/watch?v=${firstSong.urlId}`, {
+        const dispatcher = connection.playStream(ytdl(`https://www.youtube.com/watch?v=${firstSong.urlId}`, {
           filter: `audioonly`,
           quality: `highestaudio`
         }))
