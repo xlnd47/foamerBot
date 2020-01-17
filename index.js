@@ -84,10 +84,11 @@ bot.on("ready", () => {
 function generateXp(message){
   let min = 1;
   let max = 10;
-  if (message.content.includes("bru")){
-    min = 5;
-    max = 25;
-  }
+  console.log(message);
+  // if (message.content.includes("bru")){
+  //   min = 5;
+  //   max = 25;
+  // }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
