@@ -29,10 +29,6 @@ module.exports.run = async (bot, message, args, conn) => {
         }))
         .on('end', () => {
           console.log('Music ended!');
-          // Deletes the finished song from the queue
-          serverQueue.songs.shift();
-          // Calls the play function again with the next song
-          play(guild, serverQueue.songs[0]);
         })
          .on('error', error => {
           console.error(error);
