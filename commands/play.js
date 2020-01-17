@@ -9,6 +9,8 @@ module.exports.run = async (bot, message, args, conn) => {
     // console.log(message.user);
     console.log(message.author.client.voiceConnections);
     con = con; 
+
+    
     // try {
     //   let sql = `select * from playlist where guildId = "${message.guild.id} and played = 0"`;
     //   con.query(sql, (err, result) => {
