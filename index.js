@@ -84,6 +84,7 @@ bot.on("ready", () => {
 function generateXp(message){
   let min = 1;
   let max = 10;
+
   if (message.content.includes("bru")){
     min = 5;
     max = 25;
@@ -108,7 +109,8 @@ bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
 
-  con.query(`select * from xp where discordId = "${message.author.id}"`, (err, rows) => {
+  if (message.content[0] !== "?") {
+    con.query(`select * from xp where discordId = "${message.author.id}"`, (err, rows) => {
     if (err) throw err;
     //console.log(rows);
 
@@ -123,6 +125,7 @@ bot.on("message", async message => {
     con.query(sql1);
 
     checkLevelUp(message);
+  }
 
   })
 
