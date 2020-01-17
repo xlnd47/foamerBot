@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args, conn) => {
           return message.reply(`niks in queue, bruh`);
 
         let firstSong = result[0];
-        voice.playStream(ytdl(`https://www.youtube.com/watch?v=${firstSong.urlId}`, {
+        message.member.voiceChannel.playStream(ytdl(`https://www.youtube.com/watch?v=${firstSong.urlId}`, {
           filter: `audioonly`,
           quality: `highestaudio`
         }))
