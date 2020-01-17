@@ -41,7 +41,7 @@ module.exports.run = async (bot, message, args, conn) => {
 
       });
     }catch(e){
-
+      console.log(e);
     }
 
 
