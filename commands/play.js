@@ -23,7 +23,6 @@ module.exports.run = async (bot, message, args, conn) => {
         console.log(rows);
         if(rows.length < 1)
           return message.reply(`niks in queue, bruh`);
-
         let firstSong = rows[0];
 
         console.log(firstSong);
