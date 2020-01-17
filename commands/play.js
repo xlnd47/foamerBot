@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args, conn) => {
     const serverQueue = message.guild.id;
 
     try {
-      let sql = `select * from playlist where guildId = "${message.guild.id}" and played = 0"`;
+      let sql = `select * from playlist where guildId = "${message.guild.id}" and played = 0`;
       con.query(sql, function (err, result) {
         console.log(result);
         if(result.length < 1)
