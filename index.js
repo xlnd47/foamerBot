@@ -78,12 +78,12 @@ bot.on("ready", () => {
 });
 
 function generateXp(message){
-  let min = 3;
-  let max = 10;
+  let min = 5;
+  let max = 15;
 
   if (message.content.includes("bru")){
-    min = 10;
-    max = 20;
+    min = 15;
+    max = 30;
   }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -157,8 +157,11 @@ function checkLevelUp(message){
 }
 
 function levelUp(id, message, lvl){
-  let sql3 = `update xp set level = ${lvl + 1} where discordId = "${id}"`; 
+  let sql3 = `update xp set level = ${lvl + 1} where discordId = "${id}"`;
+  let sql4 = `update xp set xp = 0 where discordId = "${id}"`; 
   con.query(sql3);
+  con.query(sql4);
+
 
   message.reply(`bruh, ge zijt level ${lvl + 1} nu bruh`);
 
