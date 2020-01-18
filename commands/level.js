@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args, con) => {
             return  message.reply(`jij heb geen xp, bruh`);
         
         let xpNeeded = 5 * (rows[0].level ^ 2) + 50 * rows[0].level + 100;
-        message.reply(`jij ben lvl ${rows[0].level}, heb ${rows[0].xp} xp en ${xpNeeded} nodig voor te levelen, bruh`);
+        message.reply(`jij ben lvl ${rows[0].level}, heb ${rows[0].xp}/${xpNeeded} xp, bruh`);
     })
 
 
