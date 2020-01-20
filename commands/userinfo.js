@@ -5,9 +5,6 @@ module.exports.run = async (bot, message, args, con) => {
   //this is where the actual code for the command goes
   await message.delete()
   
-  if (!message.member.roles.has(config.devID)){
-        return message.reply("Don't try me bru").then(m => m.delete(10000))
-  }
   //check voor username ingegeven
   if (args[0] == undefined){
       return message.reply("Geef mij username bru").then(m => m.delete(10000))
