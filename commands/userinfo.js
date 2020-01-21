@@ -57,10 +57,6 @@ function getUserInfo(user, bot, message){
     // .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
  
     message.reply(embed);
-    message.reply(`@301778656303251456 is een boer`)
-    
-
-
 
 }
 
