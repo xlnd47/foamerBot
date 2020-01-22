@@ -107,7 +107,7 @@ bot.on("message", async message => {
   
 
   if(message.attachments !== {}){
-    console.log(message.attachments.length);
+    console.log(message.attachments[0].url);
     // console.log(message.attachments);
 
   }
