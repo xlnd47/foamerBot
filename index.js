@@ -106,7 +106,7 @@ bot.on("message", async message => {
   if(message.channel.type === 'dm') return;
   
 
-  var attachments = await message.attachments
+  var attachments = await message.attachments.array()
   console.log(attachments.length)
   
   if (attachments.length > 0){
