@@ -3,6 +3,8 @@ const config = require("./config.json");
 const bot = new Discord.Client();
 const fs = require("fs");
 const mysql = require('mysql');
+const request = require('request');
+const querystring = require('querystring');
 var con;
 var pool;
 
@@ -107,10 +109,12 @@ bot.on("message", async message => {
   
 
   var attachments = await message.attachments.array()
-  console.log(attachments.length)
+  //console.log(attachments.length)
   
   if (attachments.length > 0){
     console.log(attachments[0].url)
+    checkUrl(attachments[0].url, message);
+
   }
 
   
@@ -176,5 +180,44 @@ function levelUp(id, message, lvl){
 
   message.reply(`bruh, ge zijt level ${lvl + 1} nu bruh`);
 
+}
+
+
+
+async function checkUrl(urlPic, message){
+  var url = "https://nuditysearch.p.rapidapi.com/nuditySearch/image"
+  var form = {
+    "setting": "3",
+    "objecturl": urlPic
+  }
+
+  var formData = querystring.stringify(form);
+  var contentLength = formData.length;
+
+  var headers = 
+  {
+    "x-rapidapi-host": "nuditysearch.p.rapidapi.com",
+    "x-rapidapi-key": "78b8f40cd8mshe523d80da3eebdcp1bb33ajsnb6e578b84215",
+    "content-type": "application/x-www-form-urlencoded",
+    'Content-Length': contentLength,
+  }
+
+  var options = {
+      method: 'POST',
+      body: formData,
+      url: url,
+      headers: headers
+  };
+
+  request(options, callback);    
+  async function callback(error, response, body) {
+      if (!error && response.statusCode == 200) {
+          var result = await JSON.parse(body).result
+          console.log(result);
+      } else {
+        console.log("error");
+
+      }
+    }
 }
 
