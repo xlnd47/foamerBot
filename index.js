@@ -7,6 +7,7 @@ const request = require('request');
 const querystring = require('querystring');
 var con;
 var pool;
+var rapidApi
 
 
 try {
@@ -39,6 +40,13 @@ try {
       if (err) console.log(err);
       //console.log(result[0].value);
       bot.login(result[0].value)
+    });
+
+    var sql = `select value from config where name = "rapidApi"`;
+    con.query(sql, function (err, result) {
+      if (err) console.log(err);
+      //console.log(result[0].value);
+      rapidApi = result[0].value;
     });
   });
 } catch (e) {
@@ -187,7 +195,7 @@ function levelUp(id, message, lvl){
 async function checkUrl(urlPic, message){
   var url = "https://nuditysearch.p.rapidapi.com/nuditySearch/image"
   var form = {
-    "setting": "3",
+    "setting": "1",
     "objecturl": urlPic
   }
 
@@ -197,7 +205,7 @@ async function checkUrl(urlPic, message){
   var headers = 
   {
     "x-rapidapi-host": "nuditysearch.p.rapidapi.com",
-    "x-rapidapi-key": "78b8f40cd8mshe523d80da3eebdcp1bb33ajsnb6e578b84215",
+    "x-rapidapi-key": rapidApi,
     "content-type": "application/x-www-form-urlencoded",
     'Content-Length': contentLength,
   }
