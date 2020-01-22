@@ -216,9 +216,6 @@ async function checkUrl(urlPic, message){
           console.log(result);
       } else {
         console.log(body);
-        console.log(response);
-        console.log(error);
-
 
       }
     }
