@@ -195,7 +195,7 @@ function levelUp(id, message, lvl){
 async function checkUrl(urlPic, message){
   var url = "https://nuditysearch.p.rapidapi.com/nuditySearch/image"
   var form = {
-    "setting": "1",
+    "setting": "3",
     "objecturl": urlPic
   }
 
@@ -220,7 +220,14 @@ async function checkUrl(urlPic, message){
   request(options, callback);    
   async function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
-          console.log(body);
+          var result = await JSON.parse(body)
+          console.log(result);
+          if (result.classification == "NUDITY"){
+            message.delete();
+            message.reply("teveel naaktheid bruh...");
+          }
+
+
       } else {
         console.log(body);
 
