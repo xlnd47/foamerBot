@@ -195,7 +195,7 @@ function levelUp(id, message, lvl){
 async function checkUrl(urlPic, message){
   var url = "https://nuditysearch.p.rapidapi.com/nuditySearch/image"
   var form = {
-    "setting": "3",
+    "setting": "2",
     "objecturl": urlPic
   }
 
