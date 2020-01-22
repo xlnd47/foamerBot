@@ -223,8 +223,10 @@ async function checkUrl(urlPic, message){
           var result = await JSON.parse(body)
           console.log(result);
           if (result.classification == "NUDITY"){
-            message.delete();
-            message.reply("teveel naaktheid bruh...");
+            if (result.score > 50){
+              message.delete();
+              message.reply("teveel naaktheid bruh...");
+            }
           }
 
 
