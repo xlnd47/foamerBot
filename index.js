@@ -215,7 +215,10 @@ async function checkUrl(urlPic, message){
           var result = await JSON.parse(body).result
           console.log(result);
       } else {
+        console.log(body);
+        console.log(response);
         console.log(error);
+
 
       }
     }
