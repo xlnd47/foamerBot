@@ -107,6 +107,8 @@ bot.on("message", async message => {
   
 
   var attachments = await message.attachments
+  console.log(attachments.length)
+  
   if (attachments.length > 0){
     console.log(attachments[0].url)
   }
