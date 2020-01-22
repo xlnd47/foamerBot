@@ -106,11 +106,14 @@ bot.on("message", async message => {
   if(message.channel.type === 'dm') return;
   
 
-  if(message.attachments !== {}){
-    console.log(message.attachments[0].url);
-    // console.log(message.attachments);
+  var attachments = await message.attachments
+  console.log(attachments)
 
-  }
+  // if(message.attachments !== {}){
+  //   console.log(message.attachments[0].url);
+  //   // console.log(message.attachments);
+
+  // }
 
 
   if(message.content[0] !== config.prefix) {
