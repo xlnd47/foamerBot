@@ -106,8 +106,9 @@ bot.on("message", async message => {
   if(message.channel.type === 'dm') return;
   
 
-  if(message.attachments.length > 0)
+  if(message.attachments != {}){
     console.log(message.attachments);
+  }
 
 
   if(message.content[0] !== config.prefix) {
