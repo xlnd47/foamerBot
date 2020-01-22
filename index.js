@@ -105,6 +105,8 @@ bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
   
+  console.log(message.attachments);
+
   if(message.content[0] !== config.prefix) {
     con.query(`select * from xp where discordId = "${message.author.id}"`, (err, rows) => {
       if (err) throw err;
