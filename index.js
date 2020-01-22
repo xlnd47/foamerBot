@@ -107,13 +107,11 @@ bot.on("message", async message => {
   
 
   var attachments = await message.attachments
-  console.log(attachments)
+  if (attachments.length > 0){
+    console.log(attachments[0].url)
+  }
 
-  // if(message.attachments !== {}){
-  //   console.log(message.attachments[0].url);
-  //   // console.log(message.attachments);
-
-  // }
+  
 
 
   if(message.content[0] !== config.prefix) {
