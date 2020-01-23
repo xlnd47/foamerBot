@@ -129,11 +129,11 @@ bot.on("message", async message => {
 
   //console.log(filter);
 
-  console.log(message.content);
-  if (isSwearWord(message.content)){
-    message.delete();
-    return message.reply("danne boer...");
-  }
+  // console.log(message.content);
+  // if (isSwearWord(message.content)){
+  //   message.delete();
+  //   return message.reply("danne boer...");
+  // }
   
 
 
