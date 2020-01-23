@@ -179,6 +179,9 @@ function isSwearWord(message){
   }
   return false;
 
+
+  
+
 }
 
 function checkLevelUp(message){
