@@ -170,6 +170,7 @@ bot.on("message", async message => {
 });
 
 function isSwearWord(message){
+  console.log(filter);
   for (i= 0; i <filter.length; i++){
     var rgx = new RegExp(filter[i], 'gi');
     console.log(rgx);
@@ -178,10 +179,6 @@ function isSwearWord(message){
     }
   }
   return false;
-
-
-
-
 }
 
 function checkLevelUp(message){
