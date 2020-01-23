@@ -131,6 +131,7 @@ bot.on("message", async message => {
 
   console.log(message.content);
   if (isSwearWord(message.content)){
+    message.delete();
     return message.reply("danne boer...");
   }
   
@@ -173,7 +174,7 @@ function isSwearWord(message){
   //console.log(filter);
   for (i= 0; i <filter.list.length; i++){
     var rgx = new RegExp(filter.list[i], 'gi');
-    console.log(rgx);
+    //console.log(rgx);
     if (rgx.test(message)){
       return true;
     }
