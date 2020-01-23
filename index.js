@@ -5,9 +5,11 @@ const fs = require("fs");
 const mysql = require('mysql');
 const request = require('request');
 const querystring = require('querystring');
+var Filter = require('bad-words');
 var con;
 var pool;
 var rapidApi
+var filter = new Filter();
 
 
 try {
@@ -120,10 +122,12 @@ bot.on("message", async message => {
   //console.log(attachments.length)
   
   if (attachments.length > 0){
-    console.log(attachments[0].url)
+    //console.log(attachments[0].url)
     checkUrl(attachments[0].url, message);
 
   }
+
+  console.log(filter);
 
   
 
