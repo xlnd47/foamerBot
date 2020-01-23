@@ -179,7 +179,6 @@ function isSwearWord(message){
       return true;
     }
   }
-  return false;
 }
 
 function checkLevelUp(message){
