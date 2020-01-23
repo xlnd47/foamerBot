@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args, con) => {
 
       var options = {
           method: 'GET',
-          url: 'https://jokeapi.p.rapidapi.com/category/dark',
+          url: 'https://jokeapi.p.rapidapi.com/category/Any',
           qs: {format: 'json'},
           headers: {
             'x-rapidapi-host': 'jokeapi.p.rapidapi.com',
