@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, args, con) => {
 
             message.reply(result.setup).then(msg => {
                 setTimeout(function(){
-                    msg.reply(result.delivery);
+                    message.reply(result.delivery);
                  }, 3000);
                 
             })
