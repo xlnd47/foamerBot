@@ -170,9 +170,9 @@ bot.on("message", async message => {
 });
 
 function isSwearWord(message){
-  console.log(filter);
-  for (i= 0; i <filter.length; i++){
-    var rgx = new RegExp(filter[i], 'gi');
+  //console.log(filter);
+  for (i= 0; i <filter.list.length; i++){
+    var rgx = new RegExp(filter.list[i], 'gi');
     console.log(rgx);
     if (rgx.test(message)){
       return true;
