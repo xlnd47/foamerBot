@@ -129,7 +129,7 @@ bot.on("message", async message => {
 
   //console.log(filter);
 
-
+  console.log(message.content);
   if (isSwearWord(message.content)){
     return message.reply("danne boer...");
   }
@@ -180,7 +180,7 @@ function isSwearWord(message){
   return false;
 
 
-  
+
 
 }
 
