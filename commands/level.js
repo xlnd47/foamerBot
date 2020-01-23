@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args, con) => {
               'x-rapidapi-key': rapidApi
             }
           };
-        request(options, function (error, response, body) {
+        request(options, async function (error, response, body) {
             if (error) throw new Error(error);
             
             console.log(body);
