@@ -129,11 +129,9 @@ bot.on("message", async message => {
 
   //console.log(filter);
 
-  for (i= 0; i <filter.length; i++){
-    var rgx = new RegExp(filter[i], 'gi');
-    if (rgx.test(message.content)){
-      return message.reply("danne boer...");
-    }
+
+  if (isSwearWord(message.content)){
+    return message.reply("danne boer...");
   }
   
 
@@ -171,7 +169,17 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args, con);
 });
 
+function isSwearWord(message){
+  for (i= 0; i <filter.length; i++){
+    var rgx = new RegExp(filter[i], 'gi');
+    console.log(rgx);
+    if (rgx.test(message)){
+      return true;
+    }
+  }
+  return false;
 
+}
 
 function checkLevelUp(message){
   let sql2 = `select * from xp where discordId = "${message.author.id}"`
