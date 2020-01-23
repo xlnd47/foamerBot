@@ -23,18 +23,23 @@ module.exports.run = async (bot, message, args, con) => {
           }
         };
       request(options, async function (error, response, body) {
-          if (error) throw new Error(error);
-          
-          console.log(body);
-          var result = await JSON.parse(body)
-          
-
-          message.reply(result.setup).then(msg => {
-              setTimeout(function(){
-                  message.reply(result.delivery);
-               }, 3000);
-              
-          })
+            if (error) throw new Error(error);
+            
+            console.log(body);
+            var result = await JSON.parse(body)
+            
+            if (result.type == "twopart"){
+                message.reply(result.setup).then(msg => {
+                    setTimeout(function(){
+                        message.reply(result.delivery);
+                    }, 3000);
+                    
+                })
+            }else {
+                message.reply(result.joke)
+            }
+            
+            
       });
   });
 
