@@ -127,8 +127,14 @@ bot.on("message", async message => {
 
   }
 
-  console.log(filter);
+  //console.log(filter);
 
+  for (i= 0; i <filter.length; i++){
+    var rgx = new RegExp(filter[i], 'gi');
+    if (rgx.test(message.content)){
+      return message.reply("danne boer...");
+    }
+  }
   
 
 
