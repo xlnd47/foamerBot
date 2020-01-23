@@ -34,10 +34,12 @@ module.exports.run = async (bot, message, args, con) => {
             if (error) throw new Error(error);
             
             console.log(body);
+            var result = await JSON.parse(body)
+            
 
-            message.reply(body.setup).then(msg => {
+            message.reply(result.setup).then(msg => {
                 setTimeout(function(){
-                    msg.reply(body.delivery);
+                    msg.reply(result.delivery);
                  }, 3000);
                 
             })
