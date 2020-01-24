@@ -20,7 +20,11 @@ module.exports.run = async (bot, message, args, con) => {
         var days = $('#time-days').text();
         var hours = $('#time-hours').text();
 
-        message.reply(`${name} wasted ${hours} or ${days} playing lol...`)
+        if (days == "" ){
+            message.reply(`niks gevonden voor ${name}`)
+        }else {
+            message.reply(`${name} wasted ${hours} or ${days} playing lol...`)
+        }
       });
 
 
