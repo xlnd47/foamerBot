@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
-const url = require('url');
+var http = require('http');
+var url = require('url');
+var fs = require('fs');
 
 
 
@@ -10,10 +12,9 @@ module.exports.run = async (bot, message, args, con) => {
     
     var q = url.parse(adr, true);
 
-    console.log(q);
+    console.log(q.query);
 
 
-  console.log(dom);
 }
 //name this whatever the command name is.
 module.exports.help = {
