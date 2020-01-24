@@ -1,5 +1,4 @@
 const Discord = require('discord.js')
-const jsdom = require("jsdom");
 
 module.exports.run = async (bot, message, args, con) => {
   //this is where the actual code for the command goes
