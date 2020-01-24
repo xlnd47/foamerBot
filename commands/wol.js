@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args, con) => {
         uri: "https://wol.gg/stats/euw/thefoamer/",
       }, function(error, response, body) {
         var $ = cheerio.load(body.replace(/<!--|-->/g, ''))
-        console.log($('.time-days').text());
+        console.log($('#time-days').text());
       });
 
 
