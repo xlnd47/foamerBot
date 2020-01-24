@@ -16,8 +16,10 @@ module.exports.run = async (bot, message, args, con) => {
         uri: `https://wol.gg/stats/euw/${name}/`,
       }, function(error, response, body) {
         var $ = cheerio.load(body.replace(/<!--|-->/g, ''))
-        //message.reply(`You wasted ${$('#time-days').text()} playing lol...`)
-        console.log($('#time-days').text());
+        //console.log($('#time-days').text());
+        var days = $('#time-days').text();
+
+        message.reply(`You wasted ${days} playing lol...`)
       });
 
 
