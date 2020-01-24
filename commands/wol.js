@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args, con) => {
   //this is where the actual code for the command goes
     await message.delete()
 
-    var name = args[0];
+    var name = args.join('');
     request({
         uri: `https://wol.gg/stats/euw/${name}/`,
       }, function(error, response, body) {
