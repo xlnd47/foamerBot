@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args, con) => {
         var hours = $('#time-hours').text();
 
         if (days == "" ){
-            message.reply(`niks gevonden voor ${name}`)
+            message.reply(`deze brakka site vindt u nie: https://wol.gg/stats/euw/${name}/`)
         }else {
             message.reply(`${name} wasted ${hours} or ${days} playing lol...`)
         }
