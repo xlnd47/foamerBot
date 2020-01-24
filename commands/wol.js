@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args, con) => {
         //console.log($('#time-days').text());
         var days = $('#time-days').text();
 
-        message.reply(`You wasted ${days} playing lol...`)
+        message.reply(`${name} wasted ${days} playing lol...`)
       });
 
 
