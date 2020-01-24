@@ -1,16 +1,16 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
+const url = require('url');
+
+
 
 module.exports.run = async (bot, message, args, con) => {
   //this is where the actual code for the command goes
-  await message.delete()
+    await message.delete()
+    var adr = "https://wol.gg/stats/euw/thefoamer/";
+    
+    var q = url.parse(adr, true);
 
-  var dom = new JSDOM(``, {
-    url: "https://wol.gg/stats/euw/thefoamer/",
-    referrer: "https://wol.gg/stats/euw/thefoamer/",
-    contentType: "text/html",
-    includeNodeLocations: true,
-    storageQuota: 10000000
-  });
+    console.log(q);
 
 
   console.log(dom);
