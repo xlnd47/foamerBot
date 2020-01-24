@@ -18,8 +18,9 @@ module.exports.run = async (bot, message, args, con) => {
         var $ = cheerio.load(body.replace(/<!--|-->/g, ''))
         //console.log($('#time-days').text());
         var days = $('#time-days').text();
+        var hours = $('#time-hours').text();
 
-        message.reply(`${name} wasted ${days} playing lol...`)
+        message.reply(`${name} wasted ${hours} or ${days} playing lol...`)
       });
 
 
