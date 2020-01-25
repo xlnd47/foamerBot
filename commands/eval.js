@@ -7,9 +7,7 @@ module.exports.run = async (bot, message, args, con) => {
     var sql = `select value from config where name = "adminId"`;
     con.query(sql, function (err, result) {
         if (err) return message.reply('Probleem met database connectie');
-        adminId = result[0].value
-      
-
+        adminId = result[0].value;
         if (!message.member.roles.has(adminId)){
             return message.reply("sorry bruh, maar deze shit is te gevaarlijk voor non-admins").then(m => m.delete(10000))
         }
@@ -23,8 +21,6 @@ module.exports.run = async (bot, message, args, con) => {
             message.channel.send(clean(evaled), {code:"xl"});
         } 
         catch (err) {
-            bot.channels.get(config.logChannelId).send(err)
-
             message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
         }
     });
@@ -40,7 +36,6 @@ function clean(text) {
     else
         return text;
   }
-//name this whatever the command name is.
 module.exports.help = {
   name: "eval",
   description: "Evaluation command, only for developers"
