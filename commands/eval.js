@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args, con) => {
       
 
         if (!message.member.roles.has(adminId)){
-            return message.reply("Don't try me bru").then(m => m.delete(10000))
+            return message.reply("sorry bruh, maar deze shit is te gevaarlijk voor non-admins").then(m => m.delete(10000))
         }
         try {
             const code = args.join(" ");
