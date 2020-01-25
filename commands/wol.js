@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args, con) => {
         if (days == "" ){
             message.reply(`deze brakka site vindt u nie: https://wol.gg/stats/euw/${name}/`)
         }else {
-            message.reply(`${args.join(' ')} wasted ${hours} or ${days} playing lol...`)
+            message.reply(`${args.join(' ')} wasted ${hours} or ${days} playing lol RANKED`)
         }
       });
 
