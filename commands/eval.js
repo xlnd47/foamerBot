@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 var adminId;
 
 module.exports.run = async (bot, message, args, con) => {
-
     var sql = `select value from config where name = "adminId"`;
     con.query(sql, function (err, result) {
         if (err) return message.reply('Probleem met database connectie');
@@ -23,10 +22,6 @@ module.exports.run = async (bot, message, args, con) => {
             message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
         }
     });
-
-   
-
-
 }
 
 function clean(text) {
