@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args, conn) => {
 
 }
 
-function getTopList(){
+function getTopList(message){
     message.reply("nog nie geimplementeerd bruh")
 }
 
