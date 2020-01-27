@@ -22,6 +22,7 @@ function getTopList(){
 function honorPerson(message){
 
     var user = message.mentions.users.first();
+    console.log(user.id);
     if (user == undefined){
         return message.reply("fck u bruh");
     }
