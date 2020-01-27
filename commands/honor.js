@@ -22,7 +22,7 @@ function getTopList(){
 function honorPerson(message){
 
     var user = message.mentions.users.first();
-    console.log(user.id);
+    //console.log(user.id);
     if (user == undefined){
         return message.reply("fck u bruh");
     }
@@ -33,7 +33,7 @@ function honorPerson(message){
         if (err) return console.log(err);
         //console.log(result[0].value);
         if (result < 1){
-            createUser(user);
+            createUser(message, user);
         }else {
             honorUser(message, user);
         }
