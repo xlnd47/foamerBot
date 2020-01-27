@@ -74,7 +74,14 @@ jsfile.forEach((f, i) =>{
   //   console.log(`${f}, ${n} loaded!`);
   //   bot.commands.set(n, props);
   // })
-  bot.commands.set(props.help.name, props);
+  if (props.help.name.isArray()){
+    props.help.name.forEach((n, i) => {
+      console.log(`${f}, ${n} loaded!`);
+      bot.commands.set(n, props);
+    })
+  }else {
+    bot.commands.set(props.help.name, props);
+  }
 
 });
 
