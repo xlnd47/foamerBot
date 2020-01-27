@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args, con) => {
 }
 //name this whatever the command name is.
 module.exports.help = {
-  name: "report",
+  name: ["report", "dishonor"],
   description: "Example"
 
 }
