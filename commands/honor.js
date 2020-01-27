@@ -27,9 +27,9 @@ function honorPerson(message){
     }
 
 
-    let sql = `select honor from reputation where name = "${user.id}"`;
+    let sql = `select honor from reputation where discordId = "${user.id}"`;
     con.query(sql, function (err, result) {
-        if (err) console.log(err);
+        if (err) return console.log(err);
         //console.log(result[0].value);
         if (result < 1){
             createUser(user);
@@ -44,7 +44,7 @@ function honorPerson(message){
 function honorUser(message, user){
     let sql = `update reputation set honor = honor + 1 where discordId = "${user.id}"`;
     con.query(sql, function (err, result) {
-        if (err) console.log(err);
+        if (err) return console.log(err);
         //console.log(result[0].value);
         message.reply("deze bruh is gehonored");
     });
@@ -53,7 +53,7 @@ function honorUser(message, user){
 function createUser(message, user){
     let sql = `insert into reputation values("${user.id}", 1, 0)`;
     con.query(sql, function (err, result) {
-        if (err) console.log(err);
+        if (err) return console.log(err);
         //console.log(result[0].value);
         message.reply("deze bruh is gehonored");
     });
