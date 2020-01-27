@@ -20,7 +20,7 @@ function getTopList(){
 
 function honorPerson(message){
 
-    var user = await message.mentions.users.first();
+    var user = message.mentions.users.first();
     if (user == undefined){
         return message.reply("fck u bruh");
     }
