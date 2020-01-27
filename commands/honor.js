@@ -15,17 +15,26 @@ module.exports.run = async (bot, message, args, conn) => {
 }
 
 function getTopList(message){
-    message.reply("nog nie geimplementeerd bruh")
+    return message.reply("nog nie geimplementeerd bruh")
+
+    let sql = `select honor from reputation where discordId = "${user.id}"`;
+
+
 }
 
 function honorPerson(message){
+
 
     var user = message.mentions.users.first();
     //console.log(user.id);
     if (user == undefined){
         return message.reply("fck u bruh");
     }
+    if (message.member.id == user.id){
+        return message.reply("rekt.");
+    }
 
+    
 
     let sql = `select honor from reputation where discordId = "${user.id}"`;
     con.query(sql, function (err, result) {
