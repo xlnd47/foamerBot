@@ -172,7 +172,7 @@ function createUser(message, user){
 
 
 module.exports.help = {
-  name: ["report", "disreport"],
+  name: ["report", "dishonor"],
   description: "Example"
 
 }
