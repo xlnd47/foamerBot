@@ -82,7 +82,7 @@ function reportPerson(message){
 }
 
 function createUserAndreport(message, user){
-    let sql = `insert into reputation (discordId, lastTimeReport) values("${user.id}", CURDATE())`;
+    let sql = `insert into reputation (discordId, lastTimeReport) values("${message.member.id}", CURDATE())`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
         console.log("user created");
