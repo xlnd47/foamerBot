@@ -53,8 +53,21 @@ function honorPerson(message){
     if (message.member.id == user.id){
         return message.reply("rekt.");
     }
+    let sql2 = `select lastTimeHonor from reputation where discordId = "${message.member.id}"`;
+    con.query(sql, function (err, result) {
+        if (err) return console.log(err);
 
+        console.log(result[0].lastTimeHonor);
+        console.log(Date.now());
+        // if (result < 1 ){
+        //     createUserLastHonored();
+        // }else if(result[0].lastTimeHonor !== Date.now()){
 
+        // }
+
+        
+    });
+    
 
     let sql = `select honor from reputation where discordId = "${user.id}"`;
     con.query(sql, function (err, result) {
