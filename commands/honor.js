@@ -65,7 +65,7 @@ function honorPerson(message){
             console.log("nodejs now: " + dateNowString);
             console.log(userDateString < dateNowString);
     
-            if (userDateString < dateNowString){
+            if (epochToString(unixTimestamp, userDate)){
                 checkAndHonor(message, user);
                 updateLastTimeHonored(message);
             }else {
@@ -115,8 +115,8 @@ function honorUser(message, user){
     });
 }
 
-function epochToString(epoch){
-    var userDate = new Date(epoch);
+function epochToString(mysqlEpoch, epoch2){
+    var userDate = new Date(mysqlEpoch);
 
     var month = userDate.getUTCMonth() + 1; //months from 1-12
     if (month < 10){
@@ -124,7 +124,7 @@ function epochToString(epoch){
     }
 
 
-    var day = userDate.getUTCDate();
+    var day = userDate.getUTCDate() + 1;
     if (day < 10){
         day = "0" + day;
     }
@@ -132,8 +132,28 @@ function epochToString(epoch){
 
     var newdate = year + "/" + month + "/" + day;
 
-    return newdate;
 
+    var userDate2 = new Date(epoch2);
+
+    var month2= userDate2.getUTCMonth() + 1; //months from 1-12
+    if (month2 < 10){
+        month2 = "0" + month2;
+    }
+
+
+    var day2 = userDate2.getUTCDate();
+    if (day2 < 10){
+        day2 = "0" + day2;
+    }
+    var year2 = userDate2.getUTCFullYear();
+
+    var newdate2 = year2 + "/" + month2 + "/" + day2;
+
+    if(newdate < newdate2){
+        return true;
+    }else {
+        return false;
+    }
 }
 
 function createUser(message, user){
