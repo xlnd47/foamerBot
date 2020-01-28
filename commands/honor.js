@@ -57,35 +57,55 @@ function honorPerson(message){
     con.query(sql2, function (err, result) {
         if (err) return console.log(err);
 
-        var date = new Date();
-        var unixTimestamp = Math.round(date.getTime());
-        var userDate = new Date(result[0].lastTimeHonor);
-        var userDateString = epochToString(userDate);
-        var dateNowString = epochToString(unixTimestamp);
+        if(result.length < 1){
 
-        console.log("mysql now: " + userDateString);
-        console.log("nodejs now: " + dateNowString);
-        console.log(userDateString < dateNowString);
-
-        if (userDateString < dateNowString){
-            let sql = `select honor from reputation where discordId = "${user.id}"`;
-            con.query(sql, function (err, result) {
-                if (err) return console.log(err);
-                //console.log(result[0].value);
-                if (result < 1){
-                    createUser(message, user);
-                }else {
-                    honorUser(message, user);
-                }
-            });
-            
         }else {
-            return message.reply("bruh jij heb al gehonored vandaag, probeer morgen opnieuw");
+            var date = new Date();
+            var unixTimestamp = Math.round(date.getTime());
+            var userDate = new Date(result[0].lastTimeHonor);
+            var userDateString = epochToString(userDate);
+            var dateNowString = epochToString(unixTimestamp);
+    
+            console.log("mysql now: " + userDateString);
+            console.log("nodejs now: " + dateNowString);
+            console.log(userDateString < dateNowString);
+    
+            if (userDateString < dateNowString){
+                checkAndHonor(message, user);
+                updateLastTimeHonored(message, user);
+            }else {
+                return message.reply("bruh jij heb al gehonored vandaag, probeer morgen opnieuw");
+            }
         }
+
+        
     });
     
 
     
+}
+
+function checkAndHonor(message, user){
+    let sql = `select honor from reputation where discordId = "${user.id}"`;
+    con.query(sql, function (err, result) {
+        if (err) return console.log(err);
+        //console.log(result[0].value);
+        if (result < 1){
+            createUser(message, user);
+        }else {
+            honorUser(message, user);
+        }
+
+    });
+}
+
+function updateLastTimeHonored(message, user){
+    let sql = `update reputation set honor = honor + 1 where discordId = "${user.id}"`;
+    con.query(sql, function (err, result) {
+        if (err) return console.log(err);
+        //console.log(result[0].value);
+        message.reply("deze bruh is gehonored");
+    });
 }
 
 function honorUser(message, user){
