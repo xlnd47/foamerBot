@@ -16,11 +16,7 @@ module.exports.run = async (bot, message, args, conn) => {
 }
 
 async function getTopList(message){
-    //return message.reply("nog nie geimplementeerd bruh")
-
-
     let sql = `select discordId, honor from foamer.reputation order by honor DESC limit 3`;
-
 
     con.query(sql,async function (err, result) {
         if (err) return console.log(err);
@@ -46,7 +42,6 @@ function honorPerson(message){
 
 
     var user = message.mentions.users.first();
-    //console.log(user.id);
     if (user == undefined){
         return message.reply("fck u bruh");
     }
@@ -96,7 +91,6 @@ function checkAndHonor(message, user){
     let sql = `select honor from reputation where discordId = "${user.id}"`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
-        //console.log(result[0].value);
         if (result < 1){
             createUser(message, user);
         }else {
@@ -110,8 +104,6 @@ function updateLastTimeHonored(message){
     let sql = `update reputation set lastTimeHonor = CURDATE() where discordId = "${message.member.id}"`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
-        //console.log(result[0].value);
-        message.reply("deze bruh is gehonored");
     });
 }
 
@@ -119,7 +111,6 @@ function honorUser(message, user){
     let sql = `update reputation set honor = honor + 1 where discordId = "${user.id}"`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
-        //console.log(result[0].value);
         message.reply("deze bruh is gehonored");
     });
 }
@@ -149,13 +140,9 @@ function createUser(message, user){
     let sql = `insert into reputation (discordId, honor) values("${user.id}", 1)`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
-        //console.log(result[0].value);
         message.reply("deze bruh is gehonored");
     });
 }
-
-
-
 
 
 
