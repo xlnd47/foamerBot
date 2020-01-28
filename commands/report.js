@@ -81,7 +81,7 @@ function reportPerson(message){
     });
 }
 
-function createUserAndreport(){
+function createUserAndreport(message, user){
     let sql = `insert into reputation (discordId, lastTimeReport) values("${user.id}", CURDATE())`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
