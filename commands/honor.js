@@ -55,15 +55,16 @@ function honorPerson(message){
         if(result.length < 1){
             createUserAndHonor(message, user);
         }else {
+            console.log(result[0].lastTimeHonor);
             var date = new Date();
             var unixTimestamp = Math.round(date.getTime());
             var userDate = new Date(result[0].lastTimeHonor);
             var userDateString = epochToString(userDate);
             var dateNowString = epochToString(unixTimestamp);
     
-            console.log("mysql now: " + userDateString);
-            console.log("nodejs now: " + dateNowString);
-            console.log(userDateString < dateNowString);
+            // console.log("mysql now: " + userDateString);
+            // console.log("nodejs now: " + dateNowString);
+            // console.log(userDateString < dateNowString);
     
             if (epochToString(unixTimestamp, userDate)){
                 checkAndHonor(message, user);
