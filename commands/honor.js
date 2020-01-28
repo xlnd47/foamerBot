@@ -81,7 +81,7 @@ function honorPerson(message){
     });
 }
 
-function createUserAndHonor(){
+function createUserAndHonor(message,user){
     let sql = `insert into reputation (discordId, lastTimeHonor) values("${user.id}", CURDATE())`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
