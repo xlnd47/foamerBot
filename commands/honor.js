@@ -15,10 +15,29 @@ module.exports.run = async (bot, message, args, conn) => {
 }
 
 function getTopList(message){
-    return message.reply("nog nie geimplementeerd bruh")
+    //return message.reply("nog nie geimplementeerd bruh")
 
-    let sql = `select honor from reputation where discordId = "${user.id}"`;
 
+    let sql = `select discordId, honor from foamer.reputation order by honor DESC limit 3`;
+
+
+    con.query(sql, function (err, result) {
+        if (err) return console.log(err);
+
+        var user1 = Client.fetchUser(result[0].discordId);
+        var user2 = Client.fetchUser(result[1].discordId);
+        var user3 = Client.fetchUser(result[2].discordId);
+
+
+        const embed = new Discord.RichEmbed()
+        .setTitle("Top 3 most honored")
+        .setColor(0x00AE86)
+        .addField(user1.tag, result[0].honor)
+        .addField(user2.tag, result[1].honor)
+        .addField(user3.tag, result[2].honor)
+        .setFooter("Tunahan is echt een boer ojooo")
+        return message.reply(embed);
+    });
 
 }
 
@@ -34,7 +53,7 @@ function honorPerson(message){
         return message.reply("rekt.");
     }
 
-    
+
 
     let sql = `select honor from reputation where discordId = "${user.id}"`;
     con.query(sql, function (err, result) {
