@@ -1,11 +1,12 @@
 const Discord = require('discord.js')
 var con;
+var client;
 
 module.exports.run = async (bot, message, args, conn) => {
     //this is where the actual code for the command goes
     //return message.reply("Hi, Tunahan is een meisje").then(m => m.delete(10000))
     con = conn;
-
+    client = bot;
     if (args[0] == undefined){
         getTopList(message);
     }else {
@@ -24,9 +25,9 @@ function getTopList(message){
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
 
-        var user1 = Client.fetchUser(result[0].discordId);
-        var user2 = Client.fetchUser(result[1].discordId);
-        var user3 = Client.fetchUser(result[2].discordId);
+        var user1 = client.fetchUser(result[0].discordId);
+        var user2 = client.fetchUser(result[1].discordId);
+        var user3 = client.fetchUser(result[2].discordId);
 
 
         const embed = new Discord.RichEmbed()
