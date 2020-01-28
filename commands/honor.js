@@ -103,9 +103,19 @@ function honorUser(message, user){
 
 function epochToString(epoch){
     var userDate = new Date(epoch);
+
     var month = userDate.getUTCMonth() + 1; //months from 1-12
+    if (month < 10){
+        month = "0" + month;
+    }
+
+
     var day = userDate.getUTCDate();
+    if (day < 10){
+        day = "0" + day;
+    }
     var year = userDate.getUTCFullYear();
+    
     var newdate = year + "/" + month + "/" + day;
 
     return newdate;
