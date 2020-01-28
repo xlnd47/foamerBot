@@ -93,7 +93,7 @@ function honorUser(message, user){
 }
 
 function createUser(message, user){
-    let sql = `insert into reputation values("${user.id}", 1, 0)`;
+    let sql = `insert into reputation (discordId, honor) values("${user.id}", 1)`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
         //console.log(result[0].value);
