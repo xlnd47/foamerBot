@@ -55,23 +55,28 @@ function honorPerson(message){
         if(result.length < 1){
             createUserAndHonor(message, user);
         }else {
-            console.log(result[0].lastTimeHonor);
-            var date = new Date();
-            var unixTimestamp = Math.round(date.getTime());
-            var userDate = new Date(result[0].lastTimeHonor);
-            var userDateString = epochToString(userDate);
-            var dateNowString = epochToString(unixTimestamp);
-    
-            // console.log("mysql now: " + userDateString);
-            // console.log("nodejs now: " + dateNowString);
-            // console.log(userDateString < dateNowString);
-    
-            if (epochToString(unixTimestamp, userDate)){
+            if (result[0].lastTimeHonor == null){
                 checkAndHonor(message, user);
                 updateLastTimeHonored(message);
             }else {
-                return message.reply("bruh jij heb al gehonored vandaag, probeer morgen opnieuw");
+                var date = new Date();
+                var unixTimestamp = Math.round(date.getTime());
+                var userDate = new Date(result[0].lastTimeHonor);
+                var userDateString = epochToString(userDate);
+                var dateNowString = epochToString(unixTimestamp);
+        
+                // console.log("mysql now: " + userDateString);
+                // console.log("nodejs now: " + dateNowString);
+                // console.log(userDateString < dateNowString);
+        
+                if (epochToString(unixTimestamp, userDate)){
+                    checkAndHonor(message, user);
+                    updateLastTimeHonored(message);
+                }else {
+                    return message.reply("bruh jij heb al gehonored vandaag, probeer morgen opnieuw");
+                }
             }
+            
         }
     });
 }
