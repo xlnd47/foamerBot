@@ -67,28 +67,25 @@ function honorPerson(message){
         console.log("nodejs now: " + dateNowString);
         console.log(userDateString < dateNowString);
 
-        // if (result < 1 ){
-        //     createUserLastHonored();
-        // }else if(result[0].lastTimeHonor !== Date.now()){
-
-        // }
-
-        
+        if (userDateString < dateNowString){
+            let sql = `select honor from reputation where discordId = "${user.id}"`;
+            con.query(sql, function (err, result) {
+                if (err) return console.log(err);
+                //console.log(result[0].value);
+                if (result < 1){
+                    createUser(message, user);
+                }else {
+                    honorUser(message, user);
+                }
+            });
+            
+        }else {
+            return message.reply("bruh jij heb al gehonored vandaag, probeer morgen opnieuw");
+        }
     });
     
 
-    let sql = `select honor from reputation where discordId = "${user.id}"`;
-    con.query(sql, function (err, result) {
-        if (err) return console.log(err);
-        //console.log(result[0].value);
-        if (result < 1){
-            createUser(message, user);
-        }else {
-            honorUser(message, user);
-        }
-
-        
-    });
+    
 }
 
 function honorUser(message, user){
