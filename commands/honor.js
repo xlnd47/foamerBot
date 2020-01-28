@@ -56,17 +56,16 @@ function honorPerson(message){
     let sql2 = `select lastTimeHonor from reputation where discordId = "${message.member.id}"`;
     con.query(sql2, function (err, result) {
         if (err) return console.log(err);
-        var date = new Date(result[0].lastTimeHonor)
         var unixTimestamp = Math.round(date.getTime());
-        var userDate = new Date(result[0].lastTimeHonor);
-        var month = userDate.getUTCMonth() + 1; //months from 1-12
-        var day = userDate.getUTCDate();
-        var year = userDate.getUTCFullYear();
-        var newdate = year + "/" + month + "/" + day;
 
-        
-        console.log("mysql now: " + newdate);
-        console.log("nodejs now: " + Date.now());
+
+        var userDate = new Date(result[0].lastTimeHonor);
+
+        var userDateString = epochToString(userDate);
+        var dateNowString = epochToString(unixTimestamp);
+
+        console.log("mysql now: " + userDateString);
+        console.log("nodejs now: " + dateNowString);
         // if (result < 1 ){
         //     createUserLastHonored();
         // }else if(result[0].lastTimeHonor !== Date.now()){
@@ -98,6 +97,17 @@ function honorUser(message, user){
         //console.log(result[0].value);
         message.reply("deze bruh is gehonored");
     });
+}
+
+function epochToString(epoch){
+    var userDate = new Date(epoch);
+    var month = userDate.getUTCMonth() + 1; //months from 1-12
+    var day = userDate.getUTCDate();
+    var year = userDate.getUTCFullYear();
+    var newdate = year + "/" + month + "/" + day;
+
+    return newdate;
+
 }
 
 function createUser(message, user){
