@@ -58,7 +58,14 @@ function honorPerson(message){
         if (err) return console.log(err);
         var date = new Date(result[0].lastTimeHonor)
         var unixTimestamp = Math.round(date.getTime());
-        console.log("mysql now: " + unixTimestamp);
+        var userDate = new Date(result[0].lastTimeHonor);
+        var month = userDate.getUTCMonth() + 1; //months from 1-12
+        var day = userDate.getUTCDate();
+        var year = userDate.getUTCFullYear();
+        var newdate = year + "/" + month + "/" + day;
+
+        
+        console.log("mysql now: " + newdate);
         console.log("nodejs now: " + Date.now());
         // if (result < 1 ){
         //     createUserLastHonored();
