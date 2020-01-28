@@ -15,19 +15,19 @@ module.exports.run = async (bot, message, args, conn) => {
 
 }
 
-function getTopList(message){
+async function getTopList(message){
     //return message.reply("nog nie geimplementeerd bruh")
 
 
     let sql = `select discordId, honor from foamer.reputation order by honor DESC limit 3`;
 
 
-    con.query(sql, function (err, result) {
+    con.query(sql,async function (err, result) {
         if (err) return console.log(err);
 
-        var user1 = client.fetchUser(result[0].discordId);
-        var user2 = client.fetchUser(result[1].discordId);
-        var user3 = client.fetchUser(result[2].discordId);
+        var user1 = await client.fetchUser(result[0].discordId);
+        var user2 = await client.fetchUser(result[1].discordId);
+        var user3 = await client.fetchUser(result[2].discordId);
 
 
         const embed = new Discord.RichEmbed()
