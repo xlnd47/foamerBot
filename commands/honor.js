@@ -59,15 +59,14 @@ function honorPerson(message){
 
         var date = new Date();
         var unixTimestamp = Math.round(date.getTime());
-
-
         var userDate = new Date(result[0].lastTimeHonor);
-
         var userDateString = epochToString(userDate);
         var dateNowString = epochToString(unixTimestamp);
 
         console.log("mysql now: " + userDateString);
         console.log("nodejs now: " + dateNowString);
+        console.log(userDateString < dateNowString);
+
         // if (result < 1 ){
         //     createUserLastHonored();
         // }else if(result[0].lastTimeHonor !== Date.now()){
@@ -115,7 +114,7 @@ function epochToString(epoch){
         day = "0" + day;
     }
     var year = userDate.getUTCFullYear();
-    
+
     var newdate = year + "/" + month + "/" + day;
 
     return newdate;
