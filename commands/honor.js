@@ -57,8 +57,8 @@ function honorPerson(message){
     con.query(sql2, function (err, result) {
         if (err) return console.log(err);
 
-        console.log(result[0].lastTimeHonor);
-        console.log(Date.now());
+        console.log("mysql now: " + result[0].lastTimeHonor);
+        console.log("nodejs now: " + Date.now());
         // if (result < 1 ){
         //     createUserLastHonored();
         // }else if(result[0].lastTimeHonor !== Date.now()){
