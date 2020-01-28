@@ -56,8 +56,8 @@ function honorPerson(message){
     let sql2 = `select lastTimeHonor from reputation where discordId = "${message.member.id}"`;
     con.query(sql2, function (err, result) {
         if (err) return console.log(err);
-        var date = result[0].lastTimeHonor.getUnixTime();
-        console.log("mysql now: " + date);
+        var unixTimestamp = Math.round(new Date(result[0].lastTimeHonor).getTime()/1000);
+        console.log("mysql now: " + unixTimestamp);
         console.log("nodejs now: " + Date.now());
         // if (result < 1 ){
         //     createUserLastHonored();
