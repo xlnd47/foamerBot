@@ -54,7 +54,7 @@ function honorPerson(message){
         return message.reply("rekt.");
     }
     let sql2 = `select lastTimeHonor from reputation where discordId = "${message.member.id}"`;
-    con.query(sql, function (err, result) {
+    con.query(sql2, function (err, result) {
         if (err) return console.log(err);
 
         console.log(result[0].lastTimeHonor);
