@@ -48,7 +48,7 @@ function reportPerson(message){
     if (message.member.id == user.id){
         return message.reply("rekt.");
     }
-    let sql2 = `select lastTimeHonor < date(now()) bool from foamer.reputation where discordId = "${message.member.id}"`;
+    let sql2 = `select lastTimeReport < date(now()) bool from foamer.reputation where discordId = "${message.member.id}"`;
     con.query(sql2, function (err, result) {
         if (err) return console.log(err);
 
