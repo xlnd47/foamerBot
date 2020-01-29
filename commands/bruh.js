@@ -13,8 +13,10 @@ module.exports.run = async (bot, message, args, con) => {
     con.query(sql, (err, result) => { 
         if (result[0] == undefined)
             return  message.reply(`bruh, deze bruh heeft geen xp, bruh`);
+            
         //message.reply(`Deze bruh is lvl ${result[0].level} en heef ${result[0].xp} xp, bruh`);
         
+        let xpNeeded = 5 * (result[0].level ^ 2) + 50 * result[0].level + 100;
 
         const embed = new Discord.RichEmbed()
         .setTitle(`stats van ${user.tag}`)
