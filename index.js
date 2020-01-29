@@ -10,6 +10,7 @@ var con;
 var pool;
 var rapidApi
 var filter = new Filter();
+var help = new Array();
 
 
 try {
@@ -83,6 +84,14 @@ jsfile.forEach((f, i) =>{
     bot.commands.set(props.help.name, props);
   }
 
+  help += {
+    "file" : f,
+    "commands" : props.help.name,
+    "help" : props.help.description
+  };
+
+
+
 });
 
 });
@@ -90,6 +99,7 @@ jsfile.forEach((f, i) =>{
 
 bot.on("ready", () => {
   console.log(bot.user.username + " is online.")
+  console.log(help);
   bot.user.setPresence({
     game: { 
         name: 'ur mom',
