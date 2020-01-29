@@ -14,11 +14,11 @@ module.exports.run = async (bot, message, args, con) => {
         const embed = new Discord.RichEmbed()
         .setTitle(`stats van ${message.author.tag}`)
         .setColor(0x00AE86)
-        .addField("Level", result[0].level)
+        .addField("Level", result[0].level, true)
         .addField("XP/Needed", `${result[0].xp}/${xpNeeded}`)
-        .addField("Honors", result[0].honor)
+        .addField("Honors", result[0].honor, true)
         .addField("Reports", result[0].report)
-        .setFooter("Tunahan is echt een boer ojooo")
+        .setFooter("Boogie is echt een boer ojooo")
         return message.reply(embed);
     })
 
