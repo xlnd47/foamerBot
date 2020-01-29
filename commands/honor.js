@@ -59,16 +59,7 @@ function honorPerson(message){
                 checkAndHonor(message, user);
                 updateLastTimeHonored(message);
             }else {
-                // var date = new Date();
-                // var unixTimestamp = Math.round(date.getTime());
-                // var userDate = new Date(result[0].lastTimeHonor);
-                // var userDateString = epochToString(userDate);
-                // var dateNowString = epochToString(unixTimestamp);
-        
-                // console.log("mysql now: " + userDateString);
-                // console.log("nodejs now: " + dateNowString);
-                // console.log(userDateString < dateNowString);
-        
+       
                 if (result[0].bool == 1){
                     updateLastTimeHonored(message);
                     checkAndHonor(message, user);
