@@ -70,8 +70,8 @@ function reportPerson(message){
                 // console.log(userDateString < dateNowString);
         
                 if (result[0].bool == 1){
-                    checkAndreport(message, user);
                     updateLastTimereported(message);
+                    checkAndreport(message, user);
                 }else {
                     return message.reply("bruh jij heb al gereported vandaag, probeer morgen opnieuw");
                 }

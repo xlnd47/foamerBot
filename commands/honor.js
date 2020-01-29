@@ -70,8 +70,8 @@ function honorPerson(message){
                 // console.log(userDateString < dateNowString);
         
                 if (result[0].bool == 1){
-                    checkAndHonor(message, user);
                     updateLastTimeHonored(message);
+                    checkAndHonor(message, user);
                 }else {
                     return message.reply("bruh jij heb al gehonored vandaag, probeer morgen opnieuw");
                 }
