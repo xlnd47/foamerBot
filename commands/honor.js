@@ -82,7 +82,7 @@ function honorPerson(message){
 }
 
 function createUserAndHonor(message,user){
-    let sql = `insert into reputation (discordId, lastTimeHonor) values("${message.member.id}", CURDATE())`;
+    let sql = `insert into reputation (discordId, lastTimeHonor) values("${message.member.id}", date(now()))`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
         console.log("user created");
@@ -107,7 +107,7 @@ function checkAndHonor(message, user){
 }
 
 function updateLastTimeHonored(message){
-    let sql = `update reputation set lastTimeHonor = CURDATE() where discordId = "${message.member.id}"`;
+    let sql = `update reputation set lastTimeHonor = date(now()) where discordId = "${message.member.id}"`;
     con.query(sql, function (err, result) {
         if (err) return console.log(err);
     });
