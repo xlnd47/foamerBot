@@ -11,11 +11,13 @@ module.exports.run = async (bot, message, args, con) => {
         //message.reply(`jij ben lvl ${rows[0].level}, heb ${rows[0].xp}/${xpNeeded} xp, bruh`);
 
 
+        console.log(message.author);
         const embed = new Discord.RichEmbed()
         .setTitle(`stats van ${message.author.tag}`)
         .setColor('#0099ff')
         .addField("Level", result[0].level, true)
         .addField("XP/Needed", `${result[0].xp}/${xpNeeded}`, true)
+        .addBlankField()
         .addField("Honors", result[0].honor, true)
         .addField("Reports", result[0].report, true)
         .setFooter("Boogie is echt een boer ojooo")
