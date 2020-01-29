@@ -48,28 +48,28 @@ function honorPerson(message){
     if (message.member.id == user.id){
         return message.reply("rekt.");
     }
-    let sql2 = `select lastTimeHonor from reputation where discordId = "${message.member.id}"`;
+    let sql2 = `select lastTimeHonor < date(now()) bool from foamer.reputation where discordId = "${message.member.id}"`;
     con.query(sql2, function (err, result) {
         if (err) return console.log(err);
 
         if(result.length < 1){
             createUserAndHonor(message, user);
         }else {
-            if (result[0].lastTimeHonor == null){
+            if (result[0].bool == null){
                 checkAndHonor(message, user);
                 updateLastTimeHonored(message);
             }else {
-                var date = new Date();
-                var unixTimestamp = Math.round(date.getTime());
-                var userDate = new Date(result[0].lastTimeHonor);
-                var userDateString = epochToString(userDate);
-                var dateNowString = epochToString(unixTimestamp);
+                // var date = new Date();
+                // var unixTimestamp = Math.round(date.getTime());
+                // var userDate = new Date(result[0].lastTimeHonor);
+                // var userDateString = epochToString(userDate);
+                // var dateNowString = epochToString(unixTimestamp);
         
                 // console.log("mysql now: " + userDateString);
                 // console.log("nodejs now: " + dateNowString);
                 // console.log(userDateString < dateNowString);
         
-                if (epochToString(unixTimestamp, userDate)){
+                if (result[0].bool == 1){
                     checkAndHonor(message, user);
                     updateLastTimeHonored(message);
                 }else {
