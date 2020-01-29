@@ -14,6 +14,7 @@ module.exports.run = async (bot, message, args, con) => {
         console.log(message.author);
         const embed = new Discord.RichEmbed()
         .setTitle(`stats van ${message.author.tag}`)
+        .setAuthor(message.author.username, message.author.avatarURL)
         .setColor('#0099ff')
         .addField("Level", result[0].level, true)
         .addField("XP/Needed", `${result[0].xp}/${xpNeeded}`, true)
