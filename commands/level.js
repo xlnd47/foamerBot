@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args, con) => {
         .setTitle(`stats van ${message.author.tag}`)
         .setColor(0x00AE86)
         .addField("Level", result[0].level)
-        .addField("XP/Needed", `${result[1].xp}/${xpNeeded}`)
+        .addField("XP/Needed", `${result[0].xp}/${xpNeeded}`)
         .addField("Honors", result[0].honor)
         .addField("Reports", result[0].report)
         .setFooter("Tunahan is echt een boer ojooo")
