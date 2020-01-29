@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args, con) => {
 
     let sql = `select x.discordId, x.level, x.xp, r.honor, r.report From foamer.xp x left join foamer.reputation r on x.discordId = r.discordId  where x.discordId = "${message.author.id}"`;
     con.query(sql, (err, result) => { 
-        if (rows[0] == undefined)
+        if (result[0] == undefined)
             return  message.reply(`jij heb geen xp, bruh`);
         
         let xpNeeded = 5 * (result[0].level ^ 2) + 50 * result[0].level + 100;
