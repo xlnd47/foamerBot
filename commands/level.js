@@ -11,7 +11,6 @@ module.exports.run = async (bot, message, args, con) => {
         //message.reply(`jij ben lvl ${rows[0].level}, heb ${rows[0].xp}/${xpNeeded} xp, bruh`);
 
 
-        console.log(message.author);
         const embed = new Discord.RichEmbed()
         .setTitle(`stats van ${message.author.tag}`)
         .setAuthor(message.author.username, message.author.avatarURL)
