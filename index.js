@@ -99,7 +99,9 @@ jsfile.forEach((f, i) =>{
 
 bot.on("ready", () => {
   console.log(bot.user.username + " is online.")
-  console.log(help);
+  help.forEach((h, i) => {
+    console.log(h);
+  })
   bot.user.setPresence({
     game: { 
         name: 'ur mom',
