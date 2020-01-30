@@ -194,10 +194,9 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(command.slice(prefix.length));
   if(commandfile) {
     if (command.slice(prefix.length) === "help") {
-      console.log("nu wast help hoer");
+      commandfile.run(bot,message,args, con, help);
     } else {
       commandfile.run(bot,message,args, con);
-      console.log(command);
     }
   }
 });
