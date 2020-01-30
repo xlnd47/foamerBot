@@ -45,7 +45,7 @@ async function getHelpForSingleCommand(message, help, command) {
   .setFooter("Tunahan is echt een boer ojooo");;
 
   for(let i = 0; i < help.length; i++) {
-    commandExists = false;
+    let commandExists = false;
 
     if (Array.isArray(help[i]['prefix'])) {
       commandExists = help[i]['prefix'].includes(command);
