@@ -193,7 +193,7 @@ bot.on("message", async message => {
   //checks if message contains a command and runs it
   let commandfile = bot.commands.get(command.slice(prefix.length));
   if(commandfile) {
-    if (command === "help") {
+    if (command.slice(prefix.length) === "help") {
       console.log("nu wast help hoer");
     } else {
       commandfile.run(bot,message,args, con);
