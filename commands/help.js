@@ -43,10 +43,6 @@ async function getHelpForSingeCommand(message, help, command) {
       embed.addField(`Description`, help[i]['description']);
       embed.addField(`Usage`, help[i]['usage']);
       break;
-    } 
-    else 
-    {
-      console.log(`${help['prefix']} en ${command}`)
     }
   }
     

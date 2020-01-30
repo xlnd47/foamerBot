@@ -77,14 +77,16 @@ jsfile.forEach((f, i) =>{
       bot.commands.set(n, props);
       help.push({
         "prefix": `${n}`,
-        "description": `${props.help.description}`
+        "description": `${props.help.description}`,
+        "usage": `${props.help.usage}`
       })
     })
   }else {
     bot.commands.set(props.help.name, props);
     help.push({
       "prefix": `${props.help.name}`,
-      "description": `${props.help.description}`
+      "description": `${props.help.description}`,
+      "usage": `${props.help.usage}`
     })
   }
 });
