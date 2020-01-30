@@ -71,23 +71,24 @@ fs.readdir("./commands/", (err, files) => {
 jsfile.forEach((f, i) =>{
   let props = require(`./commands/${f}`);
 
-  if (Array.isArray(props.help.name)){
+  if (Array.isArray(props.help.name))
+  {
     props.help.name.forEach((n, i) => {
       bot.commands.set(n, props);
-      help.push({
-        "prefix": `${n}`,
-        "description": `${props.help.description}`,
-        "usage": `${props.help.usage}`
-      })
-    })
-  }else {
+    });
+  }
+  else 
+  {
     bot.commands.set(props.help.name, props);
+  }
+
+  if (props.help.name !== '' && props.help.name !== 'example') {
     help.push({
       "prefix": `${props.help.name}`,
       "description": `${props.help.description}`,
       "usage": `${props.help.usage}`
-    })
-  }
+    });
+  } 
 });
 
 /** 

@@ -55,6 +55,6 @@ module.exports.run = async (bot, message, args, conn) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: "play",
-  description: "NOT IMPLEMENTED",
+  description: "",
   usage: `${config.prefix}play SONG_LINK`
 }

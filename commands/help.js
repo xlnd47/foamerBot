@@ -22,7 +22,15 @@ async function getAllHelpCommands(message, help) {
     .setColor(0x00AE86);
 
   help.forEach(c => {
-    embed.addField(c['prefix'], c['description']);
+    let prefix = "";
+
+    if (Array.isArray(c['prefix'])) {
+      prefix = c['prefix'].toString();
+    } else {
+      prefix = c['prefix'];
+    }
+
+    embed.addField(prefix, c['description']);
   });
 
   embed.setFooter("Tunahan is echt een boer ojooo");
@@ -37,7 +45,15 @@ async function getHelpForSingleCommand(message, help, command) {
   .setFooter("Tunahan is echt een boer ojooo");;
 
   for(let i = 0; i < help.length; i++) {
-    if(help[i]['prefix'] === command) {
+    commandExists = false;
+
+    if (Array.isArray(help[i]['prefix'])) {
+      commandExists = help[i]['prefix'].includes(command);
+    } else {
+      commandExists = help[i]['prefix'] === command;
+    }
+    
+    if(commandExists) {
       exists = true;
       embed.addField(`Description`, help[i]['description']);
       embed.addField(`Usage`, help[i]['usage']);

@@ -50,6 +50,6 @@ function sendEmbeded(url, title, message){
 //name this whatever the command name is.
 module.exports.help = {
   name: "queue",
-  description: "NOT IMPLEMENTED",
+  description: "",
   usage: `${config.prefix}queue`
 }
