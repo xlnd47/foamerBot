@@ -82,7 +82,7 @@ jsfile.forEach((f, i) =>{
     bot.commands.set(props.help.name, props);
   }
 
-  if (props.help.name !== '' && props.help.name !== 'example') {
+  if (props.help.description !== '' && props.help.name !== 'example') {
     help.push({
       "prefix": `${props.help.name}`,
       "description": `${props.help.description}`,
