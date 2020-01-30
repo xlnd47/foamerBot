@@ -33,27 +33,25 @@ async function getAllHelpCommands(message, help) {
 
 async function getHelpForSingeCommand(message, help, command) {
   let exists = false;
-  let index = 0;
-
-  help.forEach((c, i) => {
-    if(c["prefix"] === command) {
-      exists = true;
-      index = i;
-      break;
-    }
-  });
-
   const embed = new Discord.RichEmbed()
   .setColor(0x00AE86)
   .setFooter("Tunahan is echt een boer ojooo");;
 
+  for(let i = 0; i < help.length; i++) {
+    if(c['prefix'] === command) {
+      exists = true;
+      embed.addField(help[i]['description']);
+      break;
+    }
+  }
+    
   if (!exists) {
     embed.setTitle("Command does not exist bruh");
-    return message.reply(embed);
   } else {
     embed.setTitle(`Help for the '${command}' command`)
-    .addField(help[index]['description']);
   }
+
+  return message.reply(embed);
 }
 
 //name this whatever the command name is.
