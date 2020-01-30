@@ -70,29 +70,29 @@ fs.readdir("./commands/", (err, files) => {
 
 jsfile.forEach((f, i) =>{
   let props = require(`./commands/${f}`);
-  //console.log(`${f} loaded!`);
-  // props.help.name.forEach((n, i) => {
-  //   console.log(`${f}, ${n} loaded!`);
-  //   bot.commands.set(n, props);
-  // })
+
   if (Array.isArray(props.help.name)){
     props.help.name.forEach((n, i) => {
       console.log(`${f}, ${n} loaded!`);
       bot.commands.set(n, props);
+      help.push({
+        "prefix": n,
+        "description": props.help.description
+      })
     })
   }else {
     bot.commands.set(props.help.name, props);
+    help.push({
+      "prefix": props.help.name,
+      "description": props.help.description
+    })
   }
-
-  // help += {
-  //   "file" : f,
-  //   "commands" : props.help.name,
-  //   "help" : props.help.description
-  // };
-
-
-
 });
+
+// Temp Logging of commands
+help.forEach((o, i) => {
+  console.log(`${i}: Prefix: ${i.prefix}, Description: ${i.description}`);
+})
 
 });
 
