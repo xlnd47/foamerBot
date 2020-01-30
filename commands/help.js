@@ -52,6 +52,7 @@ async function getHelpForSingleCommand(message, help, command) {
         {
           exists = true;
         }
+        console.log(`${command}  --  ${p}`);
       });
     }
     else
