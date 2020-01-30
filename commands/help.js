@@ -42,16 +42,20 @@ async function getHelpForSingeCommand(message, help, command) {
       exists = true;
       embed.addField(help[i]['description']);
       break;
+    } 
+    else 
+    {
+      console.log(`${help['prefix']} en ${command}`)
     }
   }
     
   if (!exists) {
     embed.setTitle("Command does not exist bruh");
+    return message.reply(embed).then(m => m.delete(10000));
   } else {
     embed.setTitle(`Help for the '${command}' command`)
+    return message.reply(embed);
   }
-
-  return message.reply(embed);
 }
 
 //name this whatever the command name is.
