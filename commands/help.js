@@ -7,17 +7,17 @@ module.exports.run = async (bot, message, args, con, help) => {
 
   if (args[0] == undefined)
   {
-    getAllHelpCommands(help);
+    getAllHelpCommands(message, help);
   } 
   else 
   {
-    getHelpForSingeCommand(help, args[0]);
+    getHelpForSingeCommand(message, help, args[0]);
   }
 
 
 }
 
-async function getAllHelpCommands(help) {
+async function getAllHelpCommands(message, help) {
   const embed = new Discord.RichEmbed()
     .setTitle("All Available Commands")
     .setColor(0x00AE86);
@@ -31,7 +31,7 @@ async function getAllHelpCommands(help) {
   return message.reply(embed);
 }
 
-async function getHelpForSingeCommand(help, command) {
+async function getHelpForSingeCommand(message, help, command) {
   let exists = false;
   let index = 0;
 
