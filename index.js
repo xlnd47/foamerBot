@@ -95,8 +95,9 @@ help.forEach((o, i) => {
   console.log(`${i}: Prefix: ${o['prefix']}, Description: ${o['description']}`);
 })
 
-});
 */
+
+});
 
 
 bot.on("ready", () => {
