@@ -48,6 +48,6 @@ module.exports.run = async (bot, message, args, con) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: "joke",
-  description: "joke"
+  description: "Makes the bot tell a joke to you"
 
 }

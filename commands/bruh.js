@@ -34,6 +34,6 @@ module.exports.run = async (bot, message, args, con) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: "bruh",
-  description: "bruh"
+  description: "Displays stats of a user you mention with @mention"
   
 }

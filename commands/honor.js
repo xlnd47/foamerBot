@@ -166,6 +166,6 @@ function createUser(message, user){
 //name this whatever the command name is.
 module.exports.help = {
   name: "honor",
-  description: "Example"
+  description: "Honors someone by @mentioning them or displays the top honored people"
 
 }

@@ -49,6 +49,6 @@ function sendEmbeded(url, title, message){
 //name this whatever the command name is.
 module.exports.help = {
   name: "queue",
-  description: "queue"
+  description: "NOT IMPLEMENTED"
 
 }

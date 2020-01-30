@@ -164,6 +164,6 @@ function createUser(message, user){
 
 module.exports.help = {
   name: ["report", "dishonor"],
-  description: "Example"
+  description: "Reports someone by @mentioning them or displays the top reported people"
 
 }

@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args, con) => {
         if (days == "" ){
             message.reply(`deze brakka site vindt u nie: https://wol.gg/stats/euw/${name}/`)
         }else {
-            message.reply(`${args.join(' ')} wasted ${hours} or ${days} on lol RANKED`)
+            message.reply(`${args.join(' ')} wasted ${hours} or ${days} on lol`)
         }
       });
 
@@ -32,6 +32,6 @@ module.exports.run = async (bot, message, args, con) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: "wol",
-  description: "wol"
+  description: "Shows how much time someone has wasted on league by providing the Summoner's name"
 
 }

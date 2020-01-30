@@ -32,6 +32,6 @@ module.exports.run = async (bot, message, args, con) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: ["level", "stats", "lvl"],
-  description: "level"
+  description: "Shows your own level and other stats"
 
 }
