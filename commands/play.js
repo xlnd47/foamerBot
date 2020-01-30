@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const mysql = require('mysql');
 const ytdl = require(`ytdl-core`);
-var con;
+const config = require("../config.json");
+let con;
 
 module.exports.run = async (bot, message, args, conn) => {
 
@@ -10,9 +11,9 @@ module.exports.run = async (bot, message, args, conn) => {
     con = conn; 
 
     const voiceChannel = message.member.voiceChannel;
-    var connection;
+    let connection;
     if(message.member.voiceChannel) {
-      var voice = message.member.voiceChannel.join()
+      let voice = message.member.voiceChannel.join()
       .then (connections => {
         connection = connections;
       });
@@ -54,6 +55,6 @@ module.exports.run = async (bot, message, args, conn) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: "play",
-  description: "NOT IMPLEMENTED"
-
+  description: "NOT IMPLEMENTED",
+  usage: `${config.prefix}play SONG_LINK`
 }

@@ -1,19 +1,20 @@
 const Discord = require('discord.js');
 const request = require('request');
 const querystring = require('querystring');
-var rapidApi;
+const config = require("../config.json");
+let rapidApi;
 
 module.exports.run = async (bot, message, args, con) => {
   //this is where the actual code for the command goes
-  await message.delete()
+  await message.delete();
 
 
-  var sql2 = `select value from config where name = "rapidApi"`;
+  let sql2 = `select value from config where name = "rapidApi"`;
   con.query(sql2, function (err, result) {
       if (err) console.log(err);
       rapidApi = result[0].value;
 
-      var options = {
+      let options = {
           method: 'GET',
           url: 'https://jokeapi.p.rapidapi.com/category/Any',
           qs: {format: 'json'},
@@ -26,7 +27,7 @@ module.exports.run = async (bot, message, args, con) => {
             if (error) throw new Error(error);
             
             console.log(body);
-            var result = await JSON.parse(body)
+            let result = await JSON.parse(body)
             
             if (result.type == "twopart"){
                 message.reply(result.setup).then(msg => {
@@ -48,6 +49,6 @@ module.exports.run = async (bot, message, args, con) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: "joke",
-  description: "Makes the bot tell a joke to you"
-
+  description: "Makes the bot tell a joke to you",
+  usage: `${config.prefix}joke`
 }

@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const config = require("../config.json");
 
 module.exports.run = async (bot, message, args, con) => {
   //this is where the actual code for the command goes
@@ -8,6 +9,6 @@ module.exports.run = async (bot, message, args, con) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: "example",
-  description: "Example"
-
+  description: "example",
+  usage: "example"
 }

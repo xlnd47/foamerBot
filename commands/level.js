@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const config = require("../config.json");
 
 module.exports.run = async (bot, message, args, con) => {
 
@@ -32,6 +33,6 @@ module.exports.run = async (bot, message, args, con) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: ["level", "stats", "lvl"],
-  description: "Shows your own level and other stats"
-
+  description: "Shows your own level and other stats",
+  usage: `${config.prefix}level`
 }

@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const config = require("../config.json")
+const config = require("../config.json");
 
 module.exports.run = async (bot, message, args, con) => {
   //this is where the actual code for the command goes
@@ -9,7 +10,7 @@ module.exports.run = async (bot, message, args, con) => {
   if (args[0] == undefined){
       return message.reply("Geef mij username bru").then(m => m.delete(10000))
   }
-  var user = await message.mentions.users.first()
+  let user = await message.mentions.users.first()
   if (user == undefined){
       return message.reply("Dit is geen user, bru").then(m => m.delete(10000))
   }
@@ -21,10 +22,10 @@ module.exports.run = async (bot, message, args, con) => {
 function getUserInfo(user, bot, message){
 
   //hier uw code tunahan!!
-  var createdDate = user.createdAt
-  var dateToday = new Date()
+  let createdDate = user.createdAt
+  let dateToday = new Date()
 
-  var daysOld = (dateToday.getTime() - createdDate.getTime()) / (1000 * 3600 * 24)
+  let daysOld = (dateToday.getTime() - createdDate.getTime()) / (1000 * 3600 * 24)
 
 
   const embed = new Discord.RichEmbed()
@@ -66,6 +67,6 @@ function getUserInfo(user, bot, message){
 //name this whatever the command name is.
 module.exports.help = {
   name: "userinfo",
-  description: "Gives info about the @mention"
-
+  description: "Gives info about user you mention",
+  usage: `${config.prefix}userinfo @mention`
 }

@@ -1,8 +1,9 @@
 const Discord = require('discord.js');
-var adminId;
+const config = require("../config.json");
+let adminId;
 
 module.exports.run = async (bot, message, args, con) => {
-    var sql = `select value from config where name = "adminId"`;
+    let sql = `select value from config where name = "adminId"`;
     con.query(sql, function (err, result) {
         if (err) return message.reply('Probleem met database connectie');
         adminId = result[0].value;
@@ -32,5 +33,6 @@ function clean(text) {
     }
 module.exports.help = {
   name: "eval",
-  description: "Evaluation command, only for developers"
+  description: "Evaluation command, only for developers",
+  usage: `${config.prefix}eval JAVASCRIPT_CODE`
 }

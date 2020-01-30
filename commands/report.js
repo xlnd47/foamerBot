@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
-var con;
-var client;
+const config = require("../config.json");
+let con;
+let client;
 
 module.exports.run = async (bot, message, args, conn) => {
     //this is where the actual code for the command goes
@@ -21,9 +22,9 @@ async function getTopList(message){
     con.query(sql,async function (err, result) {
         if (err) return console.log(err);
 
-        var user1 = await client.fetchUser(result[0].discordId);
-        var user2 = await client.fetchUser(result[1].discordId);
-        var user3 = await client.fetchUser(result[2].discordId);
+        let user1 = await client.fetchUser(result[0].discordId);
+        let user2 = await client.fetchUser(result[1].discordId);
+        let user3 = await client.fetchUser(result[2].discordId);
 
 
         const embed = new Discord.RichEmbed()
@@ -41,7 +42,7 @@ async function getTopList(message){
 function reportPerson(message){
 
 
-    var user = message.mentions.users.first();
+    let user = message.mentions.users.first();
     if (user == undefined){
         return message.reply("fck u bruh");
     }
@@ -113,38 +114,38 @@ function reportUser(message, user){
 }
 
 function epochToString(mysqlEpoch, epoch2){
-    var userDate = new Date(mysqlEpoch);
+    let userDate = new Date(mysqlEpoch);
 
-    var month = userDate.getUTCMonth() + 1; //months from 1-12
+    let month = userDate.getUTCMonth() + 1; //months from 1-12
     if (month < 10){
         month = "0" + month;
     }
 
 
-    var day = userDate.getUTCDate() + 1;
+    let day = userDate.getUTCDate() + 1;
     if (day < 10){
         day = "0" + day;
     }
-    var year = userDate.getUTCFullYear();
+    let year = userDate.getUTCFullYear();
 
-    var newdate = year + "/" + month + "/" + day;
+    let newdate = year + "/" + month + "/" + day;
 
 
-    var userDate2 = new Date(epoch2);
+    let userDate2 = new Date(epoch2);
 
-    var month2= userDate2.getUTCMonth() + 1; //months from 1-12
+    let month2= userDate2.getUTCMonth() + 1; //months from 1-12
     if (month2 < 10){
         month2 = "0" + month2;
     }
 
 
-    var day2 = userDate2.getUTCDate();
+    let day2 = userDate2.getUTCDate();
     if (day2 < 10){
         day2 = "0" + day2;
     }
-    var year2 = userDate2.getUTCFullYear();
+    let year2 = userDate2.getUTCFullYear();
 
-    var newdate2 = year2 + "/" + month2 + "/" + day2;
+    let newdate2 = year2 + "/" + month2 + "/" + day2;
 
     if(newdate < newdate2){
         return true;
@@ -164,6 +165,6 @@ function createUser(message, user){
 
 module.exports.help = {
   name: ["report", "dishonor"],
-  description: "Reports someone by @mentioning them or displays the top reported people"
-
+  description: "Reports someone by @mentioning them or displays the top reported people",
+  usage: `${config.prefix}report @mention  OR  ${config.prefix}report`
 }

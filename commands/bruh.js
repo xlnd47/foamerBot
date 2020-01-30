@@ -1,8 +1,8 @@
 const Discord = require('discord.js')
+const config = require("../config.json");
 
 module.exports.run = async (bot, message, args, con) => {
-        
-    var user = await message.mentions.users.first();
+    let user = await message.mentions.users.first();
     if (user == undefined)
         return message.reply(`dit is geen bruh, bruh`);
 
@@ -34,6 +34,6 @@ module.exports.run = async (bot, message, args, con) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: "bruh",
-  description: "Displays stats of a user you mention with @mention"
-  
+  description: "Displays stats of the user you mention",
+  usage: `${config.prefix}bruh @mention`
 }

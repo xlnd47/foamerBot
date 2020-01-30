@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const config = require("../config.json");
 
 module.exports.run = async (bot, message, args, con, help) => {
   //this is where the actual code for the command goes
@@ -11,10 +12,8 @@ module.exports.run = async (bot, message, args, con, help) => {
   } 
   else 
   {
-    getHelpForSingeCommand(message, help, args[0]);
+    getHelpForSingleCommand(message, help, args[0]);
   }
-
-
 }
 
 async function getAllHelpCommands(message, help) {
@@ -31,7 +30,7 @@ async function getAllHelpCommands(message, help) {
   return message.reply(embed);
 }
 
-async function getHelpForSingeCommand(message, help, command) {
+async function getHelpForSingleCommand(message, help, command) {
   let exists = false;
   const embed = new Discord.RichEmbed()
   .setColor(0x00AE86)
@@ -58,6 +57,6 @@ async function getHelpForSingeCommand(message, help, command) {
 //name this whatever the command name is.
 module.exports.help = {
   name: "help",
-  description: "Displays all the commands or help about a single command"
-
+  description: "Displays all the commands or more detailed help about a single command",
+  usage: `${config.prefix}help  OR  ${config.prefix}help COMMAND_NAME`
 }

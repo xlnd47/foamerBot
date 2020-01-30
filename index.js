@@ -73,7 +73,6 @@ jsfile.forEach((f, i) =>{
 
   if (Array.isArray(props.help.name)){
     props.help.name.forEach((n, i) => {
-      console.log(`${f}, ${n} loaded!`);
       bot.commands.set(n, props);
       help.push({
         "prefix": `${n}`,

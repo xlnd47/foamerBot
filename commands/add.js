@@ -1,14 +1,14 @@
 const Discord = require('discord.js')
 const config = require("../config.json");
 
-var getYouTubeID = require('get-youtube-id');
+let getYouTubeID = require('get-youtube-id');
 
 module.exports.run = async (bot, message, args, con) => {
     //this is where the actual code for the command goes
     if (args[0].length < 1)
         return message.reply(`gimme link bru, prefer youtube link`);
 
-    var id = getYouTubeID(args[0]);
+    let id = getYouTubeID(args[0]);
     if (id == null)
         return message.reply(`haha rekt, not possible bru`);
  
@@ -17,7 +17,6 @@ module.exports.run = async (bot, message, args, con) => {
         message.reply(`tis toegevoegd bru`);
         console.log(err);
     });
-
 }
 //name this whatever the command name is.
 module.exports.help = {

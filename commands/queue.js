@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
-var youtubeThumbnail = require('youtube-thumbnail');
+const config = require("../config.json");
+let youtubeThumbnail = require('youtube-thumbnail');
 
 module.exports.run = async (bot, message, args, con) => {
     let sql = `select * from playlist where guildId = "${message.guild.id}" and played = 0  order by dateAdded `;
@@ -20,7 +21,7 @@ module.exports.run = async (bot, message, args, con) => {
         //       });
         // });
 
-        var thumbnail = youtubeThumbnail(`https://www.youtube.com/watch?v=${rows[0].urlId}`);
+        let thumbnail = youtubeThumbnail(`https://www.youtube.com/watch?v=${rows[0].urlId}`);
         ytdl.getInfo(rows[0].urlId, (err, info) => {
                     if (err) throw err;
                     // let format = ytdl.chooseFormat(info.formats, { quality: '134' });
@@ -49,6 +50,6 @@ function sendEmbeded(url, title, message){
 //name this whatever the command name is.
 module.exports.help = {
   name: "queue",
-  description: "NOT IMPLEMENTED"
-
+  description: "NOT IMPLEMENTED",
+  usage: `${config.prefix}queue`
 }
