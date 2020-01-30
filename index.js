@@ -91,7 +91,7 @@ jsfile.forEach((f, i) =>{
 
 // Temp Logging of commands
 help.forEach((o, i) => {
-  console.log(`${i}: ${JSON.stringify(o)}`);
+  console.log(`${i}: Prefix: ${i['prefix']}, Description: ${i['description']}`);
 })
 
 });
