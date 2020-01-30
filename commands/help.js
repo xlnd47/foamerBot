@@ -22,15 +22,7 @@ async function getAllHelpCommands(message, help) {
     .setColor(0x00AE86);
 
   help.forEach(c => {
-    let prefix = "";
-
-    if (Array.isArray(c['prefix'])) {
-      prefix = c['prefix'].toString();
-    } else {
-      prefix = c['prefix'];
-    }
-
-    embed.addField(prefix, c['description']);
+    embed.addField(c['prefix'], c['description']);
   });
 
   embed.setFooter("Tunahan is echt een boer ojooo");
@@ -45,24 +37,14 @@ async function getHelpForSingleCommand(message, help, command) {
   .setFooter("Tunahan is echt een boer ojooo");;
 
   for(let i = 0; i < help.length; i++) {
-    if (Array.isArray(help[i]['prefix']))
-    {
-      help[i]['prefix'].forEach(p => {
-        if (p === command) 
-        {
-          exists = true;
-        }
-        console.log(`${command}  --  ${p}`);
-      });
-      console.log(`${command}  --  ${JSON.stringify(help[i]['prefix'])}`);
-    }
-    else
-    {
-      if(help[i]['prefix'] === command)
+    let prefixes = help[i]['prefix'].split(',');
+
+    prefixes.forEach(p => {
+      if(p === command)
       {
         exists = true;
       }
-    }
+    });
     
     if(exists) {
       exists = true;
