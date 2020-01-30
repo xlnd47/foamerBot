@@ -91,11 +91,11 @@ jsfile.forEach((f, i) =>{
   } 
 });
 
-//Logging of all available commands
+/*//Logging of all available commands
 help.forEach((o, i) => {
   console.log(`${i}: Prefix: ${o['prefix']}, Description: ${o['description']}`);
 });
-
+*/
 });
 
 

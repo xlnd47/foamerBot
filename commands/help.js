@@ -45,17 +45,24 @@ async function getHelpForSingleCommand(message, help, command) {
   .setFooter("Tunahan is echt een boer ojooo");;
 
   for(let i = 0; i < help.length; i++) {
-    let commandExists = false;
-
-    if (Array.isArray(help[i]['prefix'])) {
-      commandExists = help[i]['prefix'].includes(command);
-    } else {
-      commandExists = help[i]['prefix'] === command;
+    if (Array.isArray(help[i]['prefix']))
+    {
+      help[i]['prefix'].forEach(p => {
+        if (p === command) 
+        {
+          exists = true;
+        }
+      });
     }
-
-    console.log(`${command} -- ${help[i]['prefix']}`);
+    else
+    {
+      if(help[i]['prefix'] === command)
+      {
+        exists = true;
+      }
+    }
     
-    if(commandExists) {
+    if(exists) {
       exists = true;
       embed.addField(`Description`, help[i]['description']);
       embed.addField(`Usage`, help[i]['usage']);
