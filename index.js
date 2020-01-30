@@ -76,15 +76,15 @@ jsfile.forEach((f, i) =>{
       console.log(`${f}, ${n} loaded!`);
       bot.commands.set(n, props);
       help.push({
-        "prefix": n,
-        "description": props.help.description
+        "prefix": `${n}`,
+        "description": `${props.help.description}`
       })
     })
   }else {
     bot.commands.set(props.help.name, props);
     help.push({
-      "prefix": props.help.name,
-      "description": props.help.description
+      "prefix": `${props.help.name}`,
+      "description": `${props.help.description}`
     })
   }
 });
