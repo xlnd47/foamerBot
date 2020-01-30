@@ -189,7 +189,13 @@ bot.on("message", async message => {
 
   //checks if message contains a command and runs it
   let commandfile = bot.commands.get(command.slice(prefix.length));
-  if(commandfile) commandfile.run(bot,message,args, con);
+  if(commandfile) {
+    if (command === "help") {
+      console.log("nu wast help hoer");
+    } else {
+      commandfile.run(bot,message,args, con);
+    }
+  }
 });
 
 function isSwearWord(message){
