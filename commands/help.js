@@ -52,6 +52,8 @@ async function getHelpForSingleCommand(message, help, command) {
     } else {
       commandExists = help[i]['prefix'] === command;
     }
+
+    console.log(`${command} -- ${help[i]['prefix']}`);
     
     if(commandExists) {
       exists = true;
