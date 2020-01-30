@@ -1,4 +1,6 @@
 const Discord = require('discord.js')
+const config = require("./config.json");
+
 var getYouTubeID = require('get-youtube-id');
 
 module.exports.run = async (bot, message, args, con) => {
@@ -20,6 +22,6 @@ module.exports.run = async (bot, message, args, con) => {
 //name this whatever the command name is.
 module.exports.help = {
   name: "add",
-  description: "NOT IMPLEMENTED"
-
+  description: "NOT IMPLEMENTED",
+  usage: `${config.prefix}add SONG_LINK`
 }

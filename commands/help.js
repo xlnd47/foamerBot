@@ -41,6 +41,7 @@ async function getHelpForSingeCommand(message, help, command) {
     if(help[i]['prefix'] === command) {
       exists = true;
       embed.addField(`Description`, help[i]['description']);
+      embed.addField(`Usage`, help[i]['usage']);
       break;
     } 
     else 
