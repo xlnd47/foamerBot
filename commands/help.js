@@ -38,7 +38,7 @@ async function getHelpForSingeCommand(message, help, command) {
   .setFooter("Tunahan is echt een boer ojooo");;
 
   for(let i = 0; i < help.length; i++) {
-    if(c['prefix'] === command) {
+    if(help['prefix'] === command) {
       exists = true;
       embed.addField(help[i]['description']);
       break;
