@@ -89,12 +89,14 @@ jsfile.forEach((f, i) =>{
   }
 });
 
-// Temp Logging of commands
+/** 
+ * Logging of all available commands
 help.forEach((o, i) => {
   console.log(`${i}: Prefix: ${o['prefix']}, Description: ${o['description']}`);
 })
 
 });
+*/
 
 
 bot.on("ready", () => {
@@ -194,6 +196,7 @@ bot.on("message", async message => {
       console.log("nu wast help hoer");
     } else {
       commandfile.run(bot,message,args, con);
+      console.log(command);
     }
   }
 });
