@@ -54,6 +54,7 @@ async function getHelpForSingleCommand(message, help, command) {
         }
         console.log(`${command}  --  ${p}`);
       });
+      console.log(`${command}  --  ${JSON.stringify(help[i]['prefix'])}`);
     }
     else
     {
