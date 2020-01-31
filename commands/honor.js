@@ -5,7 +5,13 @@ let client;
 
 module.exports.run = async (bot, message, args, conn) => {
     //this is where the actual code for the command goes
+<<<<<<< HEAD
     //return message.reply("Hi, Tunahan is een meisje").then(m => m.delete(10000))    
+=======
+    //return message.reply("Hi, Tunahan is een meisje").then(m => m.delete(10000))
+
+    
+>>>>>>> 2c6441e735818018bd507392c6b4d5f08e58ea47
     con = conn;
     client = bot;
     if (args[0] == undefined){
