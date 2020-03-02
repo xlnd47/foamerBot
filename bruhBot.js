@@ -38,8 +38,8 @@ try {
     }
 
     con = connection;
-    var sql = `select value from config where name = "botToken"`;
-    con.query(sql, function (err, result) {
+    var sql1 = `select value from config where name = "botToken"`;
+    con.query(sql1, function (err, result) {
       if (err) console.log(err);
       // console.log("using token: " + result[0].value);
       bot.login(result[0].value)
